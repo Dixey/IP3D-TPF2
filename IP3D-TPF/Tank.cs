@@ -95,24 +95,30 @@ namespace IP3D_TPF
 
             KeyboardState keys = Keyboard.GetState();
 
-            if(keys.IsKeyDown(Keys.W))
-            {
-                position += direction * speed; 
-            }
-
-            if(keys.IsKeyDown(Keys.S))
-            {
-                position -= direction * speed;
-            }
-
             if(keys.IsKeyDown(Keys.A))
             {
-                yaw -= diference * speed;
+                yaw += diference * speed;
             }
 
             if(keys.IsKeyDown(Keys.D))
             {
-                yaw += diference * speed;
+                yaw -= diference * speed;
+            }
+
+            //definição da rotationMatrix através do yaw e do pitch
+            rotationMatrix = Matrix.CreateFromYawPitchRoll(yaw, pitch, 0);
+
+            //transformação da direção através da rotationMatrix
+            direction = Vector3.Transform(direction, rotationMatrix);
+
+            if (keys.IsKeyDown(Keys.W))
+            {
+                position -= direction * speed;
+            }
+
+            if (keys.IsKeyDown(Keys.S))
+            {
+                position += direction * speed;
             }
 
             //Limitar o movimento aos limites do terreno
@@ -142,12 +148,6 @@ namespace IP3D_TPF
 
             position.Y = field.SurfaceFollow(position);
             //position.Y = field.NormalFollow(position);
-
-            //definição da rotationMatrix através do yaw e do pitch
-            rotationMatrix = Matrix.CreateFromYawPitchRoll(yaw, pitch, 0);
-
-            //transformação da direção através da rotationMatrix
-            direction = Vector3.Transform(direction, rotationMatrix);
         }
 
         public void Draw(Camera camera)
