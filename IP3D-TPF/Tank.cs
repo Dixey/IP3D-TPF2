@@ -44,7 +44,7 @@ namespace IP3D_TPF
 
             tankModel = content.Load<Model>("tank");
 
-            scale = 0.001f;
+            scale = 0.005f;
 
             position = new Vector3(10f, -10.0f, 40f);
 
