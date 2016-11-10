@@ -1,0 +1,145 @@
+C:\Users\Geca\Documents\IP3D-TPF\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\Content\field.jpg
+C:\Users\Geca\Documents\IP3D-TPF\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\Content\map.jpg
+C:\Users\Geca\Documents\IP3D-TPF\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\IP3D-TPF.exe
+C:\Users\Geca\Documents\IP3D-TPF\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\IP3D-TPF.pdb
+C:\Users\Geca\Documents\IP3D-TPF\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\MonoGame.Framework.dll
+C:\Users\Geca\Documents\IP3D-TPF\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.MediaFoundation.dll
+C:\Users\Geca\Documents\IP3D-TPF\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.dll
+C:\Users\Geca\Documents\IP3D-TPF\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.XAudio2.dll
+C:\Users\Geca\Documents\IP3D-TPF\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.DXGI.dll
+C:\Users\Geca\Documents\IP3D-TPF\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.Direct3D11.dll
+C:\Users\Geca\Documents\IP3D-TPF\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.Direct2D1.dll
+C:\Users\Geca\Documents\IP3D-TPF\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.XInput.dll
+C:\Users\Geca\Documents\IP3D-TPF\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.RawInput.dll
+C:\Users\Geca\Documents\IP3D-TPF\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.Direct3D9.dll
+C:\Users\Geca\Documents\IP3D-TPF\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\MonoGame.Framework.xml
+C:\Users\Geca\Documents\IP3D-TPF\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.MediaFoundation.xml
+C:\Users\Geca\Documents\IP3D-TPF\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.xml
+C:\Users\Geca\Documents\IP3D-TPF\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.XAudio2.xml
+C:\Users\Geca\Documents\IP3D-TPF\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.DXGI.xml
+C:\Users\Geca\Documents\IP3D-TPF\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.Direct3D11.xml
+C:\Users\Geca\Documents\IP3D-TPF\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.Direct2D1.xml
+C:\Users\Geca\Documents\IP3D-TPF\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.XInput.xml
+C:\Users\Geca\Documents\IP3D-TPF\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.RawInput.xml
+C:\Users\Geca\Documents\IP3D-TPF\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.Direct3D9.xml
+C:\Users\Geca\Documents\IP3D-TPF\IP3D-TPF\IP3D-TPF\obj\x86\Debug\IP3D-TPF.csprojResolveAssemblyReference.cache
+C:\Users\Geca\Documents\IP3D-TPF\IP3D-TPF\IP3D-TPF\obj\x86\Debug\IP3D-TPF.exe
+C:\Users\Geca\Documents\IP3D-TPF\IP3D-TPF\IP3D-TPF\obj\x86\Debug\IP3D-TPF.pdb
+C:\Users\User\Desktop\IP3D-TPF\IP3D-TPF\obj\x86\Debug\IP3D-TPF.exe
+C:\Users\User\Desktop\IP3D-TPF\IP3D-TPF\obj\x86\Debug\IP3D-TPF.pdb
+C:\Users\User\Desktop\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\Content\field.jpg
+C:\Users\User\Desktop\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\Content\map.jpg
+C:\Users\User\Desktop\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\IP3D-TPF.exe
+C:\Users\User\Desktop\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\IP3D-TPF.pdb
+C:\Users\User\Desktop\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\MonoGame.Framework.dll
+C:\Users\User\Desktop\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.MediaFoundation.dll
+C:\Users\User\Desktop\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.dll
+C:\Users\User\Desktop\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.XAudio2.dll
+C:\Users\User\Desktop\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.DXGI.dll
+C:\Users\User\Desktop\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.Direct3D11.dll
+C:\Users\User\Desktop\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.Direct2D1.dll
+C:\Users\User\Desktop\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.XInput.dll
+C:\Users\User\Desktop\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.RawInput.dll
+C:\Users\User\Desktop\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.Direct3D9.dll
+C:\Users\User\Desktop\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\MonoGame.Framework.xml
+C:\Users\User\Desktop\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.MediaFoundation.xml
+C:\Users\User\Desktop\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.xml
+C:\Users\User\Desktop\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.XAudio2.xml
+C:\Users\User\Desktop\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.DXGI.xml
+C:\Users\User\Desktop\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.Direct3D11.xml
+C:\Users\User\Desktop\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.Direct2D1.xml
+C:\Users\User\Desktop\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.XInput.xml
+C:\Users\User\Desktop\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.RawInput.xml
+C:\Users\User\Desktop\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.Direct3D9.xml
+C:\Users\User\Desktop\IP3D-TPF\IP3D-TPF\obj\x86\Debug\IP3D-TPF.csprojResolveAssemblyReference.cache
+D:\IP3D-TPF\IP3D-TPF\obj\x86\Debug\IP3D-TPF.exe
+D:\IP3D-TPF\IP3D-TPF\obj\x86\Debug\IP3D-TPF.pdb
+D:\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\Content\field.jpg
+D:\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\Content\map.jpg
+D:\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\IP3D-TPF.exe
+D:\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\IP3D-TPF.pdb
+D:\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\MonoGame.Framework.dll
+D:\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.MediaFoundation.dll
+D:\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.dll
+D:\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.XAudio2.dll
+D:\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.DXGI.dll
+D:\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.Direct3D11.dll
+D:\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.Direct2D1.dll
+D:\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.XInput.dll
+D:\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.RawInput.dll
+D:\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.Direct3D9.dll
+D:\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\MonoGame.Framework.xml
+D:\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.MediaFoundation.xml
+D:\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.xml
+D:\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.XAudio2.xml
+D:\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.DXGI.xml
+D:\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.Direct3D11.xml
+D:\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.Direct2D1.xml
+D:\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.XInput.xml
+D:\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.RawInput.xml
+D:\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.Direct3D9.xml
+D:\IP3D-TPF\IP3D-TPF\obj\x86\Debug\IP3D-TPF.csprojResolveAssemblyReference.cache
+C:\Users\Utilizador\Desktop\IP3D-TPF\IP3D-TPF\obj\x86\Debug\IP3D-TPF.exe
+C:\Users\Utilizador\Desktop\IP3D-TPF\IP3D-TPF\obj\x86\Debug\IP3D-TPF.pdb
+C:\Users\Utilizador\Desktop\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\Content\field.jpg
+C:\Users\Utilizador\Desktop\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\Content\map.jpg
+C:\Users\Utilizador\Desktop\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\IP3D-TPF.exe
+C:\Users\Utilizador\Desktop\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\IP3D-TPF.pdb
+C:\Users\Utilizador\Desktop\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\MonoGame.Framework.dll
+C:\Users\Utilizador\Desktop\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.MediaFoundation.dll
+C:\Users\Utilizador\Desktop\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.dll
+C:\Users\Utilizador\Desktop\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.XAudio2.dll
+C:\Users\Utilizador\Desktop\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.DXGI.dll
+C:\Users\Utilizador\Desktop\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.Direct3D11.dll
+C:\Users\Utilizador\Desktop\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.Direct2D1.dll
+C:\Users\Utilizador\Desktop\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.XInput.dll
+C:\Users\Utilizador\Desktop\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.RawInput.dll
+C:\Users\Utilizador\Desktop\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.Direct3D9.dll
+C:\Users\Utilizador\Desktop\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\MonoGame.Framework.xml
+C:\Users\Utilizador\Desktop\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.MediaFoundation.xml
+C:\Users\Utilizador\Desktop\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.xml
+C:\Users\Utilizador\Desktop\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.XAudio2.xml
+C:\Users\Utilizador\Desktop\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.DXGI.xml
+C:\Users\Utilizador\Desktop\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.Direct3D11.xml
+C:\Users\Utilizador\Desktop\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.Direct2D1.xml
+C:\Users\Utilizador\Desktop\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.XInput.xml
+C:\Users\Utilizador\Desktop\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.RawInput.xml
+C:\Users\Utilizador\Desktop\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.Direct3D9.xml
+C:\Users\Utilizador\Desktop\IP3D-TPF\IP3D-TPF\obj\x86\Debug\IP3D-TPF.csprojResolveAssemblyReference.cache
+C:\Users\Utilizador\Desktop\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\Content\tank.xnb
+C:\Users\Utilizador\Desktop\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\Content\engine_diff_tex.xnb
+C:\Users\Utilizador\Desktop\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\Content\engine_diff_tex_0.xnb
+C:\Users\Utilizador\Desktop\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\Content\turret_alt_diff_tex.xnb
+C:\Users\Utilizador\Desktop\IP3D-TPF\IP3D-TPF\bin\Windows\x86\Debug\Content\turret_alt_diff_tex_0.xnb
+C:\Users\Utilizador\Desktop\Backup Jogo\IP3D-TPF\obj\x86\Debug\IP3D-TPF.exe
+C:\Users\Utilizador\Desktop\Backup Jogo\IP3D-TPF\obj\x86\Debug\IP3D-TPF.pdb
+C:\Users\Utilizador\Desktop\Backup Jogo\IP3D-TPF\bin\Windows\x86\Debug\Content\field.jpg
+C:\Users\Utilizador\Desktop\Backup Jogo\IP3D-TPF\bin\Windows\x86\Debug\Content\map.jpg
+C:\Users\Utilizador\Desktop\Backup Jogo\IP3D-TPF\bin\Windows\x86\Debug\Content\engine_diff_tex.xnb
+C:\Users\Utilizador\Desktop\Backup Jogo\IP3D-TPF\bin\Windows\x86\Debug\Content\engine_diff_tex_0.xnb
+C:\Users\Utilizador\Desktop\Backup Jogo\IP3D-TPF\bin\Windows\x86\Debug\Content\tank.xnb
+C:\Users\Utilizador\Desktop\Backup Jogo\IP3D-TPF\bin\Windows\x86\Debug\Content\turret_alt_diff_tex.xnb
+C:\Users\Utilizador\Desktop\Backup Jogo\IP3D-TPF\bin\Windows\x86\Debug\Content\turret_alt_diff_tex_0.xnb
+C:\Users\Utilizador\Desktop\Backup Jogo\IP3D-TPF\bin\Windows\x86\Debug\IP3D-TPF.exe
+C:\Users\Utilizador\Desktop\Backup Jogo\IP3D-TPF\bin\Windows\x86\Debug\IP3D-TPF.pdb
+C:\Users\Utilizador\Desktop\Backup Jogo\IP3D-TPF\bin\Windows\x86\Debug\MonoGame.Framework.dll
+C:\Users\Utilizador\Desktop\Backup Jogo\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.MediaFoundation.dll
+C:\Users\Utilizador\Desktop\Backup Jogo\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.dll
+C:\Users\Utilizador\Desktop\Backup Jogo\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.XAudio2.dll
+C:\Users\Utilizador\Desktop\Backup Jogo\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.DXGI.dll
+C:\Users\Utilizador\Desktop\Backup Jogo\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.Direct3D11.dll
+C:\Users\Utilizador\Desktop\Backup Jogo\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.Direct2D1.dll
+C:\Users\Utilizador\Desktop\Backup Jogo\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.XInput.dll
+C:\Users\Utilizador\Desktop\Backup Jogo\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.RawInput.dll
+C:\Users\Utilizador\Desktop\Backup Jogo\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.Direct3D9.dll
+C:\Users\Utilizador\Desktop\Backup Jogo\IP3D-TPF\bin\Windows\x86\Debug\MonoGame.Framework.xml
+C:\Users\Utilizador\Desktop\Backup Jogo\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.MediaFoundation.xml
+C:\Users\Utilizador\Desktop\Backup Jogo\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.xml
+C:\Users\Utilizador\Desktop\Backup Jogo\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.XAudio2.xml
+C:\Users\Utilizador\Desktop\Backup Jogo\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.DXGI.xml
+C:\Users\Utilizador\Desktop\Backup Jogo\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.Direct3D11.xml
+C:\Users\Utilizador\Desktop\Backup Jogo\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.Direct2D1.xml
+C:\Users\Utilizador\Desktop\Backup Jogo\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.XInput.xml
+C:\Users\Utilizador\Desktop\Backup Jogo\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.RawInput.xml
+C:\Users\Utilizador\Desktop\Backup Jogo\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.Direct3D9.xml
+C:\Users\Utilizador\Desktop\Backup Jogo\IP3D-TPF\obj\x86\Debug\IP3D-TPF.csprojResolveAssemblyReference.cache
