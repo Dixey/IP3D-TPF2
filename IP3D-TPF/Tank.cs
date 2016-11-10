@@ -16,8 +16,6 @@ namespace IP3D_TPF
         BasicEffect effect;
         Model tankModel;
 
-
-
         // Bones da torre e canhão
         ModelBone turretBone;
         ModelBone cannonBone;
