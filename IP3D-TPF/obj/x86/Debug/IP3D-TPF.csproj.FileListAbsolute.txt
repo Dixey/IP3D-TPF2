@@ -143,3 +143,35 @@ C:\Users\Utilizador\Desktop\Backup Jogo\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.X
 C:\Users\Utilizador\Desktop\Backup Jogo\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.RawInput.xml
 C:\Users\Utilizador\Desktop\Backup Jogo\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.Direct3D9.xml
 C:\Users\Utilizador\Desktop\Backup Jogo\IP3D-TPF\obj\x86\Debug\IP3D-TPF.csprojResolveAssemblyReference.cache
+C:\Users\Geca\Documents\GitHub\IP3D-TPF2\IP3D-TPF\obj\x86\Debug\IP3D-TPF.exe
+C:\Users\Geca\Documents\GitHub\IP3D-TPF2\IP3D-TPF\obj\x86\Debug\IP3D-TPF.pdb
+C:\Users\Geca\Documents\GitHub\IP3D-TPF2\IP3D-TPF\bin\Windows\x86\Debug\Content\field.jpg
+C:\Users\Geca\Documents\GitHub\IP3D-TPF2\IP3D-TPF\bin\Windows\x86\Debug\Content\map.jpg
+C:\Users\Geca\Documents\GitHub\IP3D-TPF2\IP3D-TPF\bin\Windows\x86\Debug\Content\engine_diff_tex.xnb
+C:\Users\Geca\Documents\GitHub\IP3D-TPF2\IP3D-TPF\bin\Windows\x86\Debug\Content\engine_diff_tex_0.xnb
+C:\Users\Geca\Documents\GitHub\IP3D-TPF2\IP3D-TPF\bin\Windows\x86\Debug\Content\tank.xnb
+C:\Users\Geca\Documents\GitHub\IP3D-TPF2\IP3D-TPF\bin\Windows\x86\Debug\Content\turret_alt_diff_tex.xnb
+C:\Users\Geca\Documents\GitHub\IP3D-TPF2\IP3D-TPF\bin\Windows\x86\Debug\Content\turret_alt_diff_tex_0.xnb
+C:\Users\Geca\Documents\GitHub\IP3D-TPF2\IP3D-TPF\bin\Windows\x86\Debug\IP3D-TPF.exe
+C:\Users\Geca\Documents\GitHub\IP3D-TPF2\IP3D-TPF\bin\Windows\x86\Debug\IP3D-TPF.pdb
+C:\Users\Geca\Documents\GitHub\IP3D-TPF2\IP3D-TPF\bin\Windows\x86\Debug\MonoGame.Framework.dll
+C:\Users\Geca\Documents\GitHub\IP3D-TPF2\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.MediaFoundation.dll
+C:\Users\Geca\Documents\GitHub\IP3D-TPF2\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.dll
+C:\Users\Geca\Documents\GitHub\IP3D-TPF2\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.XAudio2.dll
+C:\Users\Geca\Documents\GitHub\IP3D-TPF2\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.DXGI.dll
+C:\Users\Geca\Documents\GitHub\IP3D-TPF2\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.Direct3D11.dll
+C:\Users\Geca\Documents\GitHub\IP3D-TPF2\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.Direct2D1.dll
+C:\Users\Geca\Documents\GitHub\IP3D-TPF2\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.XInput.dll
+C:\Users\Geca\Documents\GitHub\IP3D-TPF2\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.RawInput.dll
+C:\Users\Geca\Documents\GitHub\IP3D-TPF2\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.Direct3D9.dll
+C:\Users\Geca\Documents\GitHub\IP3D-TPF2\IP3D-TPF\bin\Windows\x86\Debug\MonoGame.Framework.xml
+C:\Users\Geca\Documents\GitHub\IP3D-TPF2\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.MediaFoundation.xml
+C:\Users\Geca\Documents\GitHub\IP3D-TPF2\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.xml
+C:\Users\Geca\Documents\GitHub\IP3D-TPF2\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.XAudio2.xml
+C:\Users\Geca\Documents\GitHub\IP3D-TPF2\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.DXGI.xml
+C:\Users\Geca\Documents\GitHub\IP3D-TPF2\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.Direct3D11.xml
+C:\Users\Geca\Documents\GitHub\IP3D-TPF2\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.Direct2D1.xml
+C:\Users\Geca\Documents\GitHub\IP3D-TPF2\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.XInput.xml
+C:\Users\Geca\Documents\GitHub\IP3D-TPF2\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.RawInput.xml
+C:\Users\Geca\Documents\GitHub\IP3D-TPF2\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.Direct3D9.xml
+C:\Users\Geca\Documents\GitHub\IP3D-TPF2\IP3D-TPF\obj\x86\Debug\IP3D-TPF.csprojResolveAssemblyReference.cache
