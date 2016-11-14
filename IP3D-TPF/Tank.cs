@@ -46,7 +46,7 @@ namespace IP3D_TPF
 
             scale = 0.005f;
 
-            position = new Vector3(10f, -10.0f, 40f);
+            position = new Vector3(15f, -10.0f, 40f);
 
             effect = new BasicEffect(device);
 
@@ -194,7 +194,8 @@ namespace IP3D_TPF
 
             n = field.NormalFollow(position);
 
-            right = Vector3.Cross(direction, n);
+            Vector3 directionXZ = new Vector3(direction.X, 0, direction.Z);
+            right = Vector3.Cross(directionXZ, n);
             d = Vector3.Cross(n, right);
             r.Forward = d;
             r.Up = n;
