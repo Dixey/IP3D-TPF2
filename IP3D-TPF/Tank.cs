@@ -34,7 +34,7 @@ namespace IP3D_TPF
 
         Matrix wordlMatrix, rotationMatrix, r;
         float scale, aspectRatio, yaw, pitch, speed = 0.3f;
-        float wheelRotationValue = 0, steerRotationValue = 0, turretRotationValue = 0, cannonRotationValue = 0;
+        float wheelRotationValue = 0f, steerRotationValue = 0f, turretRotationValue = 0f, cannonRotationValue = 0f;
         Vector3 position, direction, d, n, right;
 
         public Tank(GraphicsDevice device, ContentManager content)
@@ -47,10 +47,6 @@ namespace IP3D_TPF
             scale = 0.005f;
 
             position = new Vector3(10f, -10.0f, 40f);
-
-            r.Forward = d;
-            r.Up = n;
-            r.Right = right;
 
             effect = new BasicEffect(device);
 
@@ -146,11 +142,37 @@ namespace IP3D_TPF
                 position.Z = positionBackZ;
             }
 
+            //movimento do canhão
+
+            if(keys.IsKeyDown(Keys.Up))
+            {
+                if (cannonRotationValue > -90f)
+                    cannonRotationValue -= 0.5f;
+                cannonBone.Transform = Matrix.CreateRotationX(MathHelper.ToRadians(cannonRotationValue)) * cannonTransform;
+            }
+
+            if (keys.IsKeyDown(Keys.Down))
+            {
+                if (cannonRotationValue < 2.5f)
+                    cannonRotationValue += 0.5f;
+                cannonBone.Transform = Matrix.CreateRotationX(MathHelper.ToRadians(cannonRotationValue)) * cannonTransform;
+            }
+
+            if (keys.IsKeyDown(Keys.Left))
+            {
+                turretRotationValue += 0.7f;
+                turretBone.Transform = Matrix.CreateRotationY(MathHelper.ToRadians(turretRotationValue)) * turretTransform;
+            }
+            if (keys.IsKeyDown(Keys.Right))
+            {
+                turretRotationValue -= 0.7f;
+                turretBone.Transform = Matrix.CreateRotationY(MathHelper.ToRadians(turretRotationValue)) * turretTransform;
+            }
+
             position.Y = field.SurfaceFollow(position);
-            position.Y = field.NormalFollow(position);
         }
 
-        public void Draw(Camera camera)
+        public void Draw(Camera camera, Field field)
         {
             // Aplica uma transformação qualquer no bone Root, no canhão e na torre
             tankModel.Root.Transform = Matrix.CreateScale(scale) * rotationMatrix * Matrix.CreateTranslation(position);
@@ -169,6 +191,14 @@ namespace IP3D_TPF
 
             turretBone.Transform = Matrix.CreateRotationY(MathHelper.ToRadians(30.0f)) * turretTransform;
             cannonBone.Transform = Matrix.CreateRotationX(MathHelper.ToRadians(30.0f)) * cannonTransform;
+
+            n = field.NormalFollow(position);
+
+            right = Vector3.Cross(direction, n);
+            d = Vector3.Cross(n, right);
+            r.Forward = d;
+            r.Up = n;
+            r.Right = right;
 
             // Aplica as transformações em cascata por todos os bones
             tankModel.CopyAbsoluteBoneTransformsTo(boneTransforms);

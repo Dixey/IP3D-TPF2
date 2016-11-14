@@ -63,7 +63,7 @@ namespace IP3D_TPF
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             field.Draw(GraphicsDevice, camera);
-            tank.Draw(camera);
+            tank.Draw(camera, field);
             base.Draw(gameTime);
         }
     }

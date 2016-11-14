@@ -329,10 +329,10 @@ namespace IP3D_TPF
         }
 
         //função utilizada para que o tank faça normal follow
-        public float NormalFollow(Vector3 pos)
+        public Vector3 NormalFollow(Vector3 pos)
         {
             //4 pontos e 3 vetores
-            float yA, yB, yC, yD;
+            Vector3 yA, yB, yC, yD;
             Vector3 vetor2, vetor3, vetor4;
 
             vetor2 = Vector3.Zero;
@@ -351,22 +351,22 @@ namespace IP3D_TPF
                     vetor4 = Field.vertices[i + 128 + 1].Position;
 
                     //igualar os pontos definidos em cima aos Y's dos vetores
-                    yA = vetor1.Y;
-                    yB = vetor2.Y;
-                    yC = vetor3.Y;
-                    yD = vetor4.Y;
+                    yA = Field.vertices[i].Normal;
+                    yB = Field.vertices[i + 1].Normal;
+                    yC = Field.vertices[i + 128].Normal;
+                    yD = Field.vertices[i + 128 + 1].Normal;
 
-                    //interpolação bilinear através da posição, das alturas e dos vetores
-                    float nAB = (1 - (pos.X - vetor1.X)) * yA + (pos.X - vetor1.X) * yB;
-                    float nCD = (1 - (pos.X - vetor3.X)) * yC + (pos.X - vetor3.X) * yD;
-                    float n = (1 - (pos.Z - vetor1.Z)) * nAB + (pos.Z - vetor1.Z) * nCD;
+                    // interpolacao das normais
+                    Vector3 yAB = (1 - (pos.X - vetor1.X)) * yA + (pos.X - vetor1.X) * yB;
+                    Vector3 yCD = (1 - (pos.X - vetor3.X)) * yC + (pos.X - vetor3.X) * yD;
+                    Vector3 normal = (1 - (pos.Z - vetor1.Y)) * yAB + (pos.Z - vetor1.Y) * yCD;
 
                     //queremos que a função nos retorne a normal
-                    return n;
+                    return normal;
                 }
             }
 
-            return 0;
+            return Vector3.Zero;
         }
 
         public void Draw(GraphicsDevice device, Camera camera)
