@@ -147,7 +147,7 @@ namespace IP3D_TPF
             }
 
             position.Y = field.SurfaceFollow(position);
-            //position.Y = field.NormalFollow(position);
+            position.Y = field.NormalFollow(position);
         }
 
         public void Draw(Camera camera)
