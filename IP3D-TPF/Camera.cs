@@ -11,6 +11,12 @@ using System.Threading.Tasks;
 
 namespace IP3D_TPF
 {
+    public enum CameraType
+    {
+        ThirdPerson,
+        SurfaceFollow
+    }
+    
     public class Camera
     {
         //Variáveis da classe Camera
@@ -40,10 +46,21 @@ namespace IP3D_TPF
             effect.VertexColorEnabled = true;
         }
 
-        public void Update(GraphicsDevice device, GameTime gameTime, Field field)
+        public void Update(GraphicsDevice device, GameTime gameTime, Field field, CameraType c)
         {
             //variáveis para usar tanto o teclado como o rato
             KeyboardState keys = Keyboard.GetState();
+
+            if(keys.IsKeyDown(Keys.F1))
+            {
+                c = CameraType.ThirdPerson;
+            }
+
+            if(keys.IsKeyDown(Keys.F12))
+            {
+                c = CameraType.SurfaceFollow;
+            }
+
             MouseState mouse = Mouse.GetState();
 
             //variáveis da posição do rato, diferença e o centro do ecrã

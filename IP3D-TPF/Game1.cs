@@ -11,6 +11,7 @@ namespace IP3D_TPF
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         Camera camera;
+        CameraType c;
         Field field;
         Tank tank;
 
@@ -49,7 +50,7 @@ namespace IP3D_TPF
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            camera.Update(GraphicsDevice, gameTime, field);
+            camera.Update(GraphicsDevice, gameTime, field, c);
             tank.Move(field);
 
             if (Window != null)

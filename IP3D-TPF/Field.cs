@@ -359,6 +359,7 @@ namespace IP3D_TPF
 
             return Vector3.Zero;
         }
+
         public void Draw(GraphicsDevice device, Camera camera)
         {
             //associar a view e a projection do effect à viewMatrix e projectionMatrix da câmera
