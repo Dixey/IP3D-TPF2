@@ -175,11 +175,12 @@ namespace IP3D_TPF
         public void Draw(Camera camera, Field field)
         {
             direction = new Vector3(0f, 0f, -1f);
+
             //chamada da função NormalFollow
             n = field.NormalFollow(position);
+
             rotationMatrix = Matrix.CreateFromYawPitchRoll(yaw, 0, 0);
 
-            
             //transformação da direção através da rotationMatrix
             direction = Vector3.Transform(direction, rotationMatrix);
             Debug.WriteLine(n);
@@ -190,6 +191,7 @@ namespace IP3D_TPF
             r.Forward = d;
             r.Up = n;
             r.Right = right;
+
             // Aplica uma transformação qualquer no bone Root, no canhão e na torre
             tankModel.Root.Transform = Matrix.CreateScale(scale) * r * Matrix.CreateTranslation(position);
 
@@ -207,8 +209,6 @@ namespace IP3D_TPF
 
             turretBone.Transform = Matrix.CreateRotationY(MathHelper.ToRadians(30.0f)) * turretTransform;
             cannonBone.Transform = Matrix.CreateRotationX(MathHelper.ToRadians(30.0f)) * cannonTransform;
-
-            
 
             // Aplica as transformações em cascata por todos os bones
             tankModel.CopyAbsoluteBoneTransformsTo(boneTransforms);

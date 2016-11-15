@@ -331,10 +331,9 @@ namespace IP3D_TPF
         //função utilizada para que o tank faça normal follow
         public Vector3 NormalFollow(Vector3 pos)
         {
-            //4 pontos e 3 vetores
+            //4 pontos
             Vector3 yA, yB, yC, yD;
 
-            
             for (int i = 0; i < Field.vertices.Length; i++)
             {
                 //definição do 4º vetor
