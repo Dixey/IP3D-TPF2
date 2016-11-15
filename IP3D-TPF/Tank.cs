@@ -33,7 +33,7 @@ namespace IP3D_TPF
         Matrix[] boneTransforms;
 
         Matrix wordlMatrix, rotationMatrix, r;
-        float scale, aspectRatio, yaw, pitch, speed = 0.3f;
+        float scale, aspectRatio, yaw, pitch, speed = 0.1f;
         float wheelRotationValue = 0f, steerRotationValue = 0f, turretRotationValue = 0f, cannonRotationValue = 0f;
         Vector3 position, direction, d, n, right;
 
@@ -162,7 +162,7 @@ namespace IP3D_TPF
                 position.Z = positionBackZ;
             }
 
-            //movimento do canhão
+            //movimento da torre e do canhão
 
             if(keys.IsKeyDown(Keys.Up))
             {
@@ -189,7 +189,7 @@ namespace IP3D_TPF
                 turretBone.Transform = Matrix.CreateRotationY(MathHelper.ToRadians(turretRotationValue)) * turretTransform;
             }
 
-            position.Y = field.SurfaceFollow(position) + 0.2f;
+            position.Y = field.SurfaceFollow(position) + 0.15f;
         }
 
         public void Draw(Camera camera, Field field)
