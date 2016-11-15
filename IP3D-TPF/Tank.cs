@@ -94,10 +94,10 @@ namespace IP3D_TPF
             if(keys.IsKeyDown(Keys.A))
             {
                 yaw += diference * speed;
-                
-                if(steerRotationValue > 0.5f)
+
+                if (steerRotationValue < 0.5f)
                 {
-                    steerRotationValue -= 0.2f;
+                    steerRotationValue += 0.2f;
                 }
 
                 leftSteerTransform = Matrix.CreateRotationY(MathHelper.ToRadians(wheelRotationValue)) * leftSteerTransform;
@@ -110,9 +110,9 @@ namespace IP3D_TPF
 
                 if (steerRotationValue < 0.5f)
                 {
-                    steerRotationValue += 0.2f;
+                    steerRotationValue -= 0.2f;
                 }
-
+                
                 leftSteerTransform = Matrix.CreateRotationY(MathHelper.ToRadians(wheelRotationValue)) * leftSteerTransform;
                 rightSteerTransform = Matrix.CreateRotationY(MathHelper.ToRadians(wheelRotationValue)) * rightSteerTransform;
             }
@@ -128,6 +128,7 @@ namespace IP3D_TPF
                 position -= direction * speed;
 
                 wheelRotationValue += 0.2f;
+                steerRotationValue = 0f;
 
                 leftFrontWheelTransform = Matrix.CreateRotationX(MathHelper.ToRadians(wheelRotationValue)) * leftFrontWheelTransform;
                 rightFrontWheelTransform = Matrix.CreateRotationX(MathHelper.ToRadians(wheelRotationValue)) * rightFrontWheelTransform;
@@ -137,10 +138,8 @@ namespace IP3D_TPF
             {
                 position += direction * speed;
 
-                if (wheelRotationValue < 0.5f)
-                {
-                    wheelRotationValue -= 0.2f;
-                }
+                wheelRotationValue -= 0.2f;
+                steerRotationValue = 0f;
 
                 leftFrontWheelTransform = Matrix.CreateRotationX(MathHelper.ToRadians(wheelRotationValue)) * leftFrontWheelTransform;
                 rightFrontWheelTransform = Matrix.CreateRotationX(MathHelper.ToRadians(wheelRotationValue)) * rightFrontWheelTransform;
