@@ -94,11 +94,27 @@ namespace IP3D_TPF
             if(keys.IsKeyDown(Keys.A))
             {
                 yaw += diference * speed;
+                
+                if(steerRotationValue > 0.5f)
+                {
+                    steerRotationValue -= 0.2f;
+                }
+
+                leftSteerTransform = Matrix.CreateRotationY(MathHelper.ToRadians(wheelRotationValue)) * leftSteerTransform;
+                rightSteerTransform = Matrix.CreateRotationY(MathHelper.ToRadians(wheelRotationValue)) * rightSteerTransform;
             }
 
-            if(keys.IsKeyDown(Keys.D))
+            if (keys.IsKeyDown(Keys.D))
             {
                 yaw -= diference * speed;
+
+                if (steerRotationValue < 0.5f)
+                {
+                    steerRotationValue += 0.2f;
+                }
+
+                leftSteerTransform = Matrix.CreateRotationY(MathHelper.ToRadians(wheelRotationValue)) * leftSteerTransform;
+                rightSteerTransform = Matrix.CreateRotationY(MathHelper.ToRadians(wheelRotationValue)) * rightSteerTransform;
             }
 
             //definição da rotationMatrix através do yaw e do pitch
@@ -110,11 +126,24 @@ namespace IP3D_TPF
             if (keys.IsKeyDown(Keys.W))
             {
                 position -= direction * speed;
+
+                wheelRotationValue += 0.2f;
+
+                leftFrontWheelTransform = Matrix.CreateRotationX(MathHelper.ToRadians(wheelRotationValue)) * leftFrontWheelTransform;
+                rightFrontWheelTransform = Matrix.CreateRotationX(MathHelper.ToRadians(wheelRotationValue)) * rightFrontWheelTransform;
             }
 
             if (keys.IsKeyDown(Keys.S))
             {
                 position += direction * speed;
+
+                if (wheelRotationValue < 0.5f)
+                {
+                    wheelRotationValue -= 0.2f;
+                }
+
+                leftFrontWheelTransform = Matrix.CreateRotationX(MathHelper.ToRadians(wheelRotationValue)) * leftFrontWheelTransform;
+                rightFrontWheelTransform = Matrix.CreateRotationX(MathHelper.ToRadians(wheelRotationValue)) * rightFrontWheelTransform;
             }
 
             //Limitar o movimento aos limites do terreno
@@ -147,29 +176,29 @@ namespace IP3D_TPF
             if(keys.IsKeyDown(Keys.Up))
             {
                 if (cannonRotationValue > -90f)
-                    cannonRotationValue -= 0.5f;
+                    cannonRotationValue -= 0.8f;
                 cannonBone.Transform = Matrix.CreateRotationX(MathHelper.ToRadians(cannonRotationValue)) * cannonTransform;
             }
 
             if (keys.IsKeyDown(Keys.Down))
             {
                 if (cannonRotationValue < 2.5f)
-                    cannonRotationValue += 0.5f;
+                    cannonRotationValue += 0.8f;
                 cannonBone.Transform = Matrix.CreateRotationX(MathHelper.ToRadians(cannonRotationValue)) * cannonTransform;
             }
 
             if (keys.IsKeyDown(Keys.Left))
             {
-                turretRotationValue += 0.7f;
+                turretRotationValue += 0.8f;
                 turretBone.Transform = Matrix.CreateRotationY(MathHelper.ToRadians(turretRotationValue)) * turretTransform;
             }
             if (keys.IsKeyDown(Keys.Right))
             {
-                turretRotationValue -= 0.7f;
+                turretRotationValue -= 0.8f;
                 turretBone.Transform = Matrix.CreateRotationY(MathHelper.ToRadians(turretRotationValue)) * turretTransform;
             }
 
-            position.Y = field.SurfaceFollow(position);
+            position.Y = field.SurfaceFollow(position) + 0.2f;
         }
 
         public void Draw(Camera camera, Field field)
@@ -206,9 +235,6 @@ namespace IP3D_TPF
             rightFrontWheelBone.Transform = wheelRotation * rightFrontWheelTransform;
             leftSteerBone.Transform = steerRotation * leftSteerTransform;
             rightSteerBone.Transform = steerRotation * rightSteerTransform;
-
-            turretBone.Transform = Matrix.CreateRotationY(MathHelper.ToRadians(30.0f)) * turretTransform;
-            cannonBone.Transform = Matrix.CreateRotationX(MathHelper.ToRadians(30.0f)) * cannonTransform;
 
             // Aplica as transformações em cascata por todos os bones
             tankModel.CopyAbsoluteBoneTransformsTo(boneTransforms);
