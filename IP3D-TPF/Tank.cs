@@ -35,7 +35,7 @@ namespace IP3D_TPF
         Matrix wordlMatrix, rotationMatrix, r;
         float scale, aspectRatio, yaw, pitch, speed = 0.1f;
         float wheelRotationValue = 0f, steerRotationValue = 0f, turretRotationValue = 0f, cannonRotationValue = 0f;
-        Vector3 position, direction, d, n, right;
+        public Vector3 position, direction, d, n, right;
 
         public Tank(GraphicsDevice device, ContentManager content)
         {
@@ -91,6 +91,7 @@ namespace IP3D_TPF
 
             KeyboardState keys = Keyboard.GetState();
 
+            //movimento do tank e respetiva rotação das rodas
             if(keys.IsKeyDown(Keys.A))
             {
                 yaw += diference * speed;
@@ -131,6 +132,53 @@ namespace IP3D_TPF
             }
 
             if (keys.IsKeyDown(Keys.S))
+            {
+                position += direction * speed;
+
+                wheelRotationValue -= 0.2f;
+            }
+
+            //movimento do tank adversário
+            if (keys.IsKeyDown(Keys.J))
+            {
+                yaw += diference * speed;
+
+                if (steerRotationValue < 0.5f)
+                {
+                    steerRotationValue += 0.1f;
+                }
+
+            }
+
+            if (keys.IsKeyDown(Keys.L))
+            {
+                yaw -= diference * speed;
+
+                if (steerRotationValue > -0.5f)
+                {
+                    steerRotationValue -= 0.1f;
+                }
+            }
+
+            if (keys.IsKeyUp(Keys.J) && keys.IsKeyUp(Keys.L))
+            {
+                steerRotationValue = 0f;
+            }
+
+            //definição da rotationMatrix através do yaw e do pitch
+            rotationMatrix = Matrix.CreateFromYawPitchRoll(yaw, pitch, 0);
+
+            //transformação da direção através da rotationMatrix
+            direction = Vector3.Transform(direction, rotationMatrix);
+
+            if (keys.IsKeyDown(Keys.I))
+            {
+                position -= direction * speed;
+
+                wheelRotationValue += 0.2f;
+            }
+
+            if (keys.IsKeyDown(Keys.K))
             {
                 position += direction * speed;
 
