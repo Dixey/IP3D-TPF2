@@ -173,7 +173,7 @@ namespace IP3D_TPF
                     Vector3 n8 = Vector3.Cross(vector8, vector1);
                     n8.Normalize();
 
-                    Vector3 n = (n1 + n2 + n3 + n4 + n5 + n6 + n7 + n8) / 8;
+                    Vector3 n = (n1 + n2 + n3 + n4 + n5 + n6 + n7 + n8) / 8.0f;
                     vertices[(x + z * heightMap.Width)].Normal = n;
                 }
             }
@@ -262,7 +262,7 @@ namespace IP3D_TPF
                 Vector3 n4 = Vector3.Cross(vector8, vector7);
                 n4.Normalize();
 
-                Vector3 n = (n1 + n2 + n3 + n4) / 4;
+                Vector3 n = (n1 + n2 + n3 + n4) / 4.0f;
                 vertices[(1 + z * heightMap.Width)].Normal = n;
             }
         }
@@ -333,12 +333,8 @@ namespace IP3D_TPF
         {
             //4 pontos e 3 vetores
             Vector3 yA, yB, yC, yD;
-            Vector3 vetor2, vetor3, vetor4;
 
-            vetor2 = Vector3.Zero;
-            vetor3 = Vector3.Zero;
-            vetor4 = Vector3.Zero;
-
+            
             for (int i = 0; i < Field.vertices.Length; i++)
             {
                 //definição do 4º vetor
@@ -346,11 +342,7 @@ namespace IP3D_TPF
 
                 if ((int)pos.X == vetor1.X && (int)pos.Z == vetor1.Z)
                 {
-                    vetor2 = Field.vertices[i + 1].Position;
-                    vetor3 = Field.vertices[i + 128].Position;
-                    vetor4 = Field.vertices[i + 128 + 1].Position;
-
-                    //igualar os pontos definidos em cima aos Y's dos vetores
+                    //igualar os pontos definidos em cima às normais dos vetores
                     yA = Field.vertices[i].Normal;
                     yB = Field.vertices[i + 1].Normal;
                     yC = Field.vertices[i + 128].Normal;
@@ -358,8 +350,8 @@ namespace IP3D_TPF
 
                     // interpolacao das normais
                     Vector3 yAB = (1 - (pos.X - vetor1.X)) * yA + (pos.X - vetor1.X) * yB;
-                    Vector3 yCD = (1 - (pos.X - vetor3.X)) * yC + (pos.X - vetor3.X) * yD;
-                    Vector3 normal = (1 - (pos.Z - vetor1.Y)) * yAB + (pos.Z - vetor1.Y) * yCD;
+                    Vector3 yCD = (1 - (pos.X - vetor1.X)) * yC + (pos.X - vetor1.X) * yD;
+                    Vector3 normal = (1 - (pos.Z - vetor1.Z)) * yAB + (pos.Z - vetor1.Z) * yCD;
 
                     //queremos que a função nos retorne a normal
                     return normal;
