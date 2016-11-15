@@ -97,24 +97,24 @@ namespace IP3D_TPF
 
                 if (steerRotationValue < 0.5f)
                 {
-                    steerRotationValue += 0.2f;
+                    steerRotationValue += 0.1f;
                 }
 
-                leftSteerTransform = Matrix.CreateRotationY(MathHelper.ToRadians(wheelRotationValue)) * leftSteerTransform;
-                rightSteerTransform = Matrix.CreateRotationY(MathHelper.ToRadians(wheelRotationValue)) * rightSteerTransform;
             }
 
             if (keys.IsKeyDown(Keys.D))
             {
                 yaw -= diference * speed;
 
-                if (steerRotationValue < 0.5f)
+                if (steerRotationValue > -0.5f)
                 {
-                    steerRotationValue -= 0.2f;
+                    steerRotationValue -= 0.1f;
                 }
-                
-                leftSteerTransform = Matrix.CreateRotationY(MathHelper.ToRadians(wheelRotationValue)) * leftSteerTransform;
-                rightSteerTransform = Matrix.CreateRotationY(MathHelper.ToRadians(wheelRotationValue)) * rightSteerTransform;
+            }
+
+            if(keys.IsKeyUp(Keys.A) && keys.IsKeyUp(Keys.D))
+            {
+                steerRotationValue = 0f;
             }
 
             //definição da rotationMatrix através do yaw e do pitch
@@ -128,10 +128,6 @@ namespace IP3D_TPF
                 position -= direction * speed;
 
                 wheelRotationValue += 0.2f;
-                steerRotationValue = 0f;
-
-                leftFrontWheelTransform = Matrix.CreateRotationX(MathHelper.ToRadians(wheelRotationValue)) * leftFrontWheelTransform;
-                rightFrontWheelTransform = Matrix.CreateRotationX(MathHelper.ToRadians(wheelRotationValue)) * rightFrontWheelTransform;
             }
 
             if (keys.IsKeyDown(Keys.S))
@@ -139,10 +135,6 @@ namespace IP3D_TPF
                 position += direction * speed;
 
                 wheelRotationValue -= 0.2f;
-                steerRotationValue = 0f;
-
-                leftFrontWheelTransform = Matrix.CreateRotationX(MathHelper.ToRadians(wheelRotationValue)) * leftFrontWheelTransform;
-                rightFrontWheelTransform = Matrix.CreateRotationX(MathHelper.ToRadians(wheelRotationValue)) * rightFrontWheelTransform;
             }
 
             //Limitar o movimento aos limites do terreno
