@@ -37,8 +37,8 @@ namespace IP3D_TPF
 
             field = new Field(GraphicsDevice, Content);
 
-            tank = new Tank(GraphicsDevice, Content);
-            enemyTank = new Tank(GraphicsDevice, Content);
+            tank = new Tank(GraphicsDevice, Content, ChooseTank.tank);
+            enemyTank = new Tank(GraphicsDevice, Content, ChooseTank.enemyTank);
         }
 
         protected override void UnloadContent()
@@ -53,10 +53,8 @@ namespace IP3D_TPF
 
             camera.Update(GraphicsDevice, gameTime, field, c);
 
-            enemyTank.position = new Vector3(20f, -10.0f, 40f);
-
-            tank.Move(field);
-            enemyTank.Move(field);
+            tank.Move(field, ChooseTank.tank);
+            enemyTank.Move(field, ChooseTank.enemyTank);
 
             if (Window != null)
                 Mouse.SetPosition(Window.ClientBounds.Width / 2, Window.ClientBounds.Height / 2);

@@ -11,6 +11,12 @@ using System.Threading.Tasks;
 
 namespace IP3D_TPF
 {
+    public enum ChooseTank
+    {
+        tank,
+        enemyTank
+    }
+
     class Tank
     {
         BasicEffect effect;
@@ -37,7 +43,7 @@ namespace IP3D_TPF
         float wheelRotationValue = 0f, steerRotationValue = 0f, turretRotationValue = 0f, cannonRotationValue = 0f;
         public Vector3 position, direction, d, n, right;
 
-        public Tank(GraphicsDevice device, ContentManager content)
+        public Tank(GraphicsDevice device, ContentManager content, ChooseTank c)
         {
             wordlMatrix = Matrix.Identity;
             r = Matrix.Identity;
@@ -46,7 +52,15 @@ namespace IP3D_TPF
 
             scale = 0.005f;
 
-            position = new Vector3(15f, -10.0f, 40f);
+            if(c == ChooseTank.tank)
+            {
+                position = new Vector3(15f, -10.0f, 40f);
+            }
+
+            if(c == ChooseTank.enemyTank)
+            {
+                position = new Vector3(20f, -10f, 40f);
+            }
 
             effect = new BasicEffect(device);
 
@@ -79,7 +93,7 @@ namespace IP3D_TPF
             boneTransforms = new Matrix[tankModel.Bones.Count];
         }
 
-        public void Move(Field field)
+        public void Move(Field field, ChooseTank c)
         {
             //posição inicial da direção
             direction = new Vector3(0f, 0f, -1f);
@@ -91,98 +105,104 @@ namespace IP3D_TPF
 
             KeyboardState keys = Keyboard.GetState();
 
-            //movimento do tank e respetiva rotação das rodas
-            if(keys.IsKeyDown(Keys.A))
+            if(c == ChooseTank.tank)
             {
-                yaw += diference * speed;
-
-                if (steerRotationValue < 0.5f)
+                //movimento do tank e respetiva rotação das rodas
+                if (keys.IsKeyDown(Keys.A))
                 {
-                    steerRotationValue += 0.1f;
+                    yaw += diference * speed;
+
+                    if (steerRotationValue < 0.5f)
+                    {
+                        steerRotationValue += 0.1f;
+                    }
+
                 }
 
-            }
-
-            if (keys.IsKeyDown(Keys.D))
-            {
-                yaw -= diference * speed;
-
-                if (steerRotationValue > -0.5f)
+                if (keys.IsKeyDown(Keys.D))
                 {
-                    steerRotationValue -= 0.1f;
-                }
-            }
+                    yaw -= diference * speed;
 
-            if(keys.IsKeyUp(Keys.A) && keys.IsKeyUp(Keys.D))
-            {
-                steerRotationValue = 0f;
-            }
-
-            //definição da rotationMatrix através do yaw e do pitch
-            rotationMatrix = Matrix.CreateFromYawPitchRoll(yaw, pitch, 0);
-
-            //transformação da direção através da rotationMatrix
-            direction = Vector3.Transform(direction, rotationMatrix);
-
-            if (keys.IsKeyDown(Keys.W))
-            {
-                position -= direction * speed;
-
-                wheelRotationValue += 0.2f;
-            }
-
-            if (keys.IsKeyDown(Keys.S))
-            {
-                position += direction * speed;
-
-                wheelRotationValue -= 0.2f;
-            }
-
-            //movimento do tank adversário
-            if (keys.IsKeyDown(Keys.J))
-            {
-                yaw += diference * speed;
-
-                if (steerRotationValue < 0.5f)
-                {
-                    steerRotationValue += 0.1f;
+                    if (steerRotationValue > -0.5f)
+                    {
+                        steerRotationValue -= 0.1f;
+                    }
                 }
 
-            }
-
-            if (keys.IsKeyDown(Keys.L))
-            {
-                yaw -= diference * speed;
-
-                if (steerRotationValue > -0.5f)
+                if (keys.IsKeyUp(Keys.A) && keys.IsKeyUp(Keys.D))
                 {
-                    steerRotationValue -= 0.1f;
+                    steerRotationValue = 0f;
+                }
+
+                //definição da rotationMatrix através do yaw e do pitch
+                rotationMatrix = Matrix.CreateFromYawPitchRoll(yaw, pitch, 0);
+
+                //transformação da direção através da rotationMatrix
+                direction = Vector3.Transform(direction, rotationMatrix);
+
+                if (keys.IsKeyDown(Keys.W))
+                {
+                    position -= direction * speed;
+
+                    wheelRotationValue += 0.2f;
+                }
+
+                if (keys.IsKeyDown(Keys.S))
+                {
+                    position += direction * speed;
+
+                    wheelRotationValue -= 0.2f;
                 }
             }
 
-            if (keys.IsKeyUp(Keys.J) && keys.IsKeyUp(Keys.L))
+            if (c == ChooseTank.enemyTank)
             {
-                steerRotationValue = 0f;
-            }
+                //movimento do tank adversário
+                if (keys.IsKeyDown(Keys.J))
+                {
+                    yaw += diference * speed;
 
-            //definição da rotationMatrix através do yaw e do pitch
-            rotationMatrix = Matrix.CreateFromYawPitchRoll(yaw, pitch, 0);
+                    if (steerRotationValue < 0.5f)
+                    {
+                        steerRotationValue += 0.1f;
+                    }
 
-            //transformação da direção através da rotationMatrix
-            direction = Vector3.Transform(direction, rotationMatrix);
+                }
 
-            if (keys.IsKeyDown(Keys.I))
-            {
-                position -= direction * speed;
+                if (keys.IsKeyDown(Keys.L))
+                {
+                    yaw -= diference * speed;
 
-                wheelRotationValue += 0.2f;
-            }
+                    if (steerRotationValue > -0.5f)
+                    {
+                        steerRotationValue -= 0.1f;
+                    }
+                }
 
-            if (keys.IsKeyDown(Keys.K))
-            {
-                position += direction * speed;
+                if (keys.IsKeyUp(Keys.J) && keys.IsKeyUp(Keys.L))
+                {
+                    steerRotationValue = 0f;
+                }
 
-                wheelRotationValue -= 0.2f;
+                //definição da rotationMatrix através do yaw e do pitch
+                rotationMatrix = Matrix.CreateFromYawPitchRoll(yaw, pitch, 0);
+
+                //transformação da direção através da rotationMatrix
+                direction = Vector3.Transform(direction, rotationMatrix);
+
+                if (keys.IsKeyDown(Keys.I))
+                {
+                    position -= direction * speed;
+
+                    wheelRotationValue += 0.2f;
+                }
+
+                if (keys.IsKeyDown(Keys.K))
+                {
+                    position += direction * speed;
+
+                    wheelRotationValue -= 0.2f;
+                }
             }
 
             //Limitar o movimento aos limites do terreno
