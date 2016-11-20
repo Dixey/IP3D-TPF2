@@ -17,7 +17,7 @@ namespace IP3D_TPF
         enemyTank
     }
 
-    class Tank
+    public class Tank
     {
         BasicEffect effect;
         Model tankModel;
@@ -39,11 +39,11 @@ namespace IP3D_TPF
         Matrix[] boneTransforms;
 
         Matrix wordlMatrix, rotationMatrix, r;
-        float scale, aspectRatio, yaw, pitch, speed = 0.1f;
+        public float scale, aspectRatio, yaw, pitch, speed = 0.1f;
         float wheelRotationValue = 0f, steerRotationValue = 0f, turretRotationValue = 0f, cannonRotationValue = 0f;
         public Vector3 position, direction, d, n, right;
 
-        public Tank(GraphicsDevice device, ContentManager content, ChooseTank c)
+        public Tank(GraphicsDevice device, ContentManager content, ChooseTank tank)
         {
             wordlMatrix = Matrix.Identity;
             r = Matrix.Identity;
@@ -52,12 +52,12 @@ namespace IP3D_TPF
 
             scale = 0.005f;
 
-            if(c == ChooseTank.tank)
+            if(tank == ChooseTank.tank)
             {
                 position = new Vector3(15f, -10.0f, 40f);
             }
 
-            if(c == ChooseTank.enemyTank)
+            if(tank == ChooseTank.enemyTank)
             {
                 position = new Vector3(20f, -10f, 40f);
             }
@@ -93,7 +93,7 @@ namespace IP3D_TPF
             boneTransforms = new Matrix[tankModel.Bones.Count];
         }
 
-        public void Move(Field field, ChooseTank c)
+        public void Move(Field field, ChooseTank tank)
         {
             //posição inicial da direção
             direction = new Vector3(0f, 0f, -1f);
@@ -105,7 +105,7 @@ namespace IP3D_TPF
 
             KeyboardState keys = Keyboard.GetState();
 
-            if(c == ChooseTank.tank)
+            if(tank == ChooseTank.tank)
             {
                 //movimento do tank e respetiva rotação das rodas
                 if (keys.IsKeyDown(Keys.A))
@@ -155,7 +155,7 @@ namespace IP3D_TPF
                 }
             }
 
-            if (c == ChooseTank.enemyTank)
+            if (tank == ChooseTank.enemyTank)
             {
                 //movimento do tank adversário
                 if (keys.IsKeyDown(Keys.J))

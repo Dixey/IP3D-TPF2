@@ -10,7 +10,7 @@ namespace IP3D_TPF
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        Camera camera;
+        Camera SurfaceFollowCamera, ThirdPersonCamera;
         CameraType c;
         Field field;
         Tank tank, enemyTank;
@@ -30,8 +30,8 @@ namespace IP3D_TPF
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            camera = new Camera(GraphicsDevice);
-
+            SurfaceFollowCamera = new Camera(GraphicsDevice, CameraType.SurfaceFollow, tank);
+            ThirdPersonCamera = new Camera(GraphicsDevice, CameraType.ThirdPerson, tank);
             if (Window != null)
                 Mouse.SetPosition(Window.ClientBounds.Width / 2, Window.ClientBounds.Height / 2);
 
@@ -51,7 +51,7 @@ namespace IP3D_TPF
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            camera.Update(GraphicsDevice, gameTime, field, c);
+            SurfaceFollowCamera.Update(GraphicsDevice, gameTime, field, c);
 
             tank.Move(field, ChooseTank.tank);
             enemyTank.Move(field, ChooseTank.enemyTank);
@@ -66,9 +66,9 @@ namespace IP3D_TPF
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            field.Draw(GraphicsDevice, camera);
-            tank.Draw(camera, field);
-            enemyTank.Draw(camera, field);
+            field.Draw(GraphicsDevice, SurfaceFollowCamera);
+            tank.Draw(SurfaceFollowCamera, field);
+            enemyTank.Draw(SurfaceFollowCamera, field);
             base.Draw(gameTime);
         }
     }
