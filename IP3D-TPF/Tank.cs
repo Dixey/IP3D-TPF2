@@ -42,6 +42,7 @@ namespace IP3D_TPF
         public float scale, aspectRatio, yaw, pitch, speed = 0.1f;
         float wheelRotationValue = 0f, steerRotationValue = 0f, turretRotationValue = 0f, cannonRotationValue = 0f;
         public Vector3 position, direction, d, n, right;
+        BoundingSphere bsphere;
 
         public Tank(GraphicsDevice device, ContentManager content, ChooseTank tank)
         {
@@ -66,6 +67,8 @@ namespace IP3D_TPF
 
             // Calcula a aspectRatio, a view matrix e a projeção
             aspectRatio = (float)device.Viewport.Width / device.Viewport.Height;
+
+            bsphere = new BoundingSphere(position, 2);
 
             // Lê os bones
             leftBackWheelBone = tankModel.Bones["l_back_wheel_geo"];
@@ -281,6 +284,8 @@ namespace IP3D_TPF
 
             // Aplica uma transformação qualquer no bone Root, no canhão e na torre
             tankModel.Root.Transform = Matrix.CreateScale(scale) * r * Matrix.CreateTranslation(position);
+
+            bsphere.Transform(tankModel.Root.Transform);
 
             Matrix wheelRotation = Matrix.CreateRotationX(wheelRotationValue);
             Matrix steerRotation = Matrix.CreateRotationY(steerRotationValue);

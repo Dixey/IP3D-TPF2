@@ -362,6 +362,34 @@ namespace IP3D_TPF
             return Vector3.Zero;
         }
 
+        /*public Vector3 NormalFollow(Vector3 pos)
+        {
+            //4 pontos
+            Vector3 yA, yB, yC, yD;
+            
+            //definição do 4º vetor
+            Vector3 vetor1 = Field.vertices[i].Position;
+
+            if ((int)pos.X == vetor1.X && (int)pos.Z == vetor1.Z)
+            {
+                //igualar os pontos definidos em cima às normais dos vetores
+                yA = Field.vertices[i].Normal;
+                yB = Field.vertices[i + 1].Normal;
+                yC = Field.vertices[i + 128].Normal;
+                yD = Field.vertices[i + 128 + 1].Normal;
+
+                // interpolacao das normais
+                Vector3 yAB = (1 - (pos.X - vetor1.X)) * yA + (pos.X - vetor1.X) * yB;
+                Vector3 yCD = (1 - (pos.X - vetor1.X)) * yC + (pos.X - vetor1.X) * yD;
+                Vector3 normal = (1 - (pos.Z - vetor1.Z)) * yAB + (pos.Z - vetor1.Z) * yCD;
+
+                //queremos que a função nos retorne a normal
+                return normal;
+            }
+
+            return Vector3.Zero;
+        }*/
+
         public void Draw(GraphicsDevice device, Camera camera)
         {
             //associar a view e a projection do effect à viewMatrix e projectionMatrix da câmera
