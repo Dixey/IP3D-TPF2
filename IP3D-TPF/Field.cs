@@ -97,51 +97,51 @@ namespace IP3D_TPF
                 }
             }
 
-            for (int z = 0; z < heightMap.Height; z++)
-            {
-                for (int x = 0; x < heightMap.Width; x++)
-                {
-                    if((x - 1) >= 0 && (z - 1) >= 0)
-                    {
-                        vector1 = vertices[(x - 1) + (z - 1) * heightMap.Width].Position - vertices[(x + z * heightMap.Width)].Position;
-                    }
+            //for (int z = 0; z < heightMap.Height; z++)
+            //{
+            //    for (int x = 0; x < heightMap.Width; x++)
+            //    {
+            //        if ((x - 1) >= 0 && (z - 1) >= 0)
+            //        {
+            //            vector1 = vertices[(x - 1) + (z - 1) * heightMap.Width].Position - vertices[(x + z * heightMap.Width)].Position;
+            //        }
 
-                    if((x - 1) >= 0 && z >= 0)
-                    {
-                        vector2 = vertices[(x - 1) + z * heightMap.Width].Position - vertices[(x + z * heightMap.Width)].Position;
-                    }
+            //        if ((x - 1) >= 0 && z >= 0)
+            //        {
+            //            vector2 = vertices[(x - 1) + z * heightMap.Width].Position - vertices[(x + z * heightMap.Width)].Position;
+            //        }
 
-                    if((x - 1) >= 0 && (z + 1) < 128)
-                    {
-                        vector3 = vertices[(x - 1) + (z + 1) * heightMap.Width].Position - vertices[(x + z * heightMap.Width)].Position;
-                    }
+            //        if ((x - 1) >= 0 && (z + 1) < 128)
+            //        {
+            //            vector3 = vertices[(x - 1) + (z + 1) * heightMap.Width].Position - vertices[(x + z * heightMap.Width)].Position;
+            //        }
 
-                    if(x >= 0 && (z + 1) < 128)
-                    {
-                        vector4 = vertices[x + (z + 1) * heightMap.Width].Position - vertices[(x + z * heightMap.Width)].Position;
-                    }
+            //        if (x >= 0 && (z + 1) < 128)
+            //        {
+            //            vector4 = vertices[x + (z + 1) * heightMap.Width].Position - vertices[(x + z * heightMap.Width)].Position;
+            //        }
 
-                    if((x + 1 < 128) && (z + 1 < 128))
-                    {
-                        vector5 = vertices[(x + 1) + (z + 1) * heightMap.Width].Position - vertices[(x + z * heightMap.Width)].Position;
-                    }
+            //        if ((x + 1 < 128) && (z + 1 < 128))
+            //        {
+            //            vector5 = vertices[(x + 1) + (z + 1) * heightMap.Width].Position - vertices[(x + z * heightMap.Width)].Position;
+            //        }
 
-                    if((x + 1 < 128) && (z < 128))
-                    {
-                        vector6 = vertices[(x + 1) + z * heightMap.Width].Position - vertices[(x + z * heightMap.Width)].Position;
-                    }
+            //        if ((x + 1 < 128) && (z < 128))
+            //        {
+            //            vector6 = vertices[(x + 1) + z * heightMap.Width].Position - vertices[(x + z * heightMap.Width)].Position;
+            //        }
 
-                    if((x < 128) && (z < 128))
-                    {
-                        vector7 = vertices[(x + z * heightMap.Width)].Position - vertices[(x + z * heightMap.Width)].Position;
-                    }
+            //        if ((x < 128) && (z < 128))
+            //        {
+            //            vector7 = vertices[(x + z * heightMap.Width)].Position - vertices[(x + z * heightMap.Width)].Position;
+            //        }
 
-                    if((x + 1) < 128 && (z - 1 >= 0))
-                    {
-                        vector8 = vertices[(x + 1) + (z - 1) * heightMap.Width].Position - vertices[(x + z * heightMap.Width)].Position;
-                    }
-                }
-            }
+            //        if ((x + 1) < 128 && (z - 1 >= 0))
+            //        {
+            //            vector8 = vertices[(x + 1) + (z - 1) * heightMap.Width].Position - vertices[(x + z * heightMap.Width)].Position;
+            //        }
+            //    }
+            //}
 
             //vetores à volta do vértice do meio
             for (int z = 1; z < heightMap.Height - 1; z++)
@@ -198,7 +198,8 @@ namespace IP3D_TPF
                 Vector3 n4 = Vector3.Cross(vector5, vector6);
                 n4.Normalize();
 
-                Vector3 n = (n1 + n2 + n3 + n4) / 4;
+                Vector3 n = (n1 + n2 + n3 + n4) / 4.0f;
+                n.Normalize();
                 vertices[(x + 0 * heightMap.Width)].Normal = n;
             }
 
@@ -220,7 +221,8 @@ namespace IP3D_TPF
                 Vector3 n4 = Vector3.Cross(vector8, vector7);
                 n4.Normalize();
 
-                Vector3 n = (n1 + n2 + n3 + n4) / 4;
+                Vector3 n = (n1 + n2 + n3 + n4) / 4.0f;
+                n.Normalize();
                 vertices[(0 + z * heightMap.Width)].Normal = n;
             }
 
@@ -242,7 +244,8 @@ namespace IP3D_TPF
                 Vector3 n4 = Vector3.Cross(vector5, vector6);
                 n4.Normalize();
 
-                Vector3 n = (n1 + n2 + n3 + n4) / 4;
+                Vector3 n = (n1 + n2 + n3 + n4) / 4.0f;
+                n.Normalize();
                 vertices[(x + 1 * heightMap.Width)].Normal = n;
             }
 
@@ -265,6 +268,7 @@ namespace IP3D_TPF
                 n4.Normalize();
 
                 Vector3 n = (n1 + n2 + n3 + n4) / 4.0f;
+                n.Normalize();
                 vertices[(1 + z * heightMap.Width)].Normal = n;
             }
         }

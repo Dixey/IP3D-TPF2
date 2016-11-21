@@ -31,10 +31,15 @@ namespace IP3D_TPF
             //guardar o aspectRatio do ecrã de jogo numa variável
             aspectRatio = (float)(device.Viewport.Width / device.Viewport.Height);
 
-            /*if(camera == CameraType.ThirdPerson)
+            if(camera == CameraType.ThirdPerson)
             {
                 ThirdPersonCamera(position, tank, tank.position);
-            }*/
+            }
+
+            if(camera == CameraType.Free)
+            {
+                FreeCamera();
+            }
 
             //coordenadas da posição inicial da câmera
             position = new Vector3(10f, 10f, 50.0f);
@@ -213,13 +218,13 @@ namespace IP3D_TPF
             position = new Vector3(100, 200, 100);
         }
 
-        public void ThirdPersonCamera(Vector3 pos, Tank tank, Vector3 postank)
+        public void ThirdPersonCamera(Vector3 camPos, Tank tank, Vector3 postank)
         {
-            thirdPersonReference = new Vector3(0, 100, -100);
+            thirdPersonReference = new Vector3(0, tank.position.Y + 100, -100);
             rotationMatrix = Matrix.CreateRotationY(tank.yaw);
             Vector3 tranformedReference = Vector3.Transform(thirdPersonReference, rotationMatrix);
-            pos = tranformedReference + postank;
-            viewMatrix = Matrix.CreateLookAt(pos, postank, new Vector3(0.0f, 1.0f, 0.0f));
+            camPos = tranformedReference + postank;
+            viewMatrix = Matrix.CreateLookAt(camPos, postank + rotationMatrix.Forward * 3, Vector3.Cross(rotationMatrix.Left, tranformedReference));
             projectionMatrix = Matrix.CreatePerspectiveFieldOfView(MathHelper.ToRadians(45f), aspectRatio, 0.1f, 1000f);
         }
     }

@@ -30,8 +30,6 @@ namespace IP3D_TPF
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            SurfaceFollowCamera = new Camera(GraphicsDevice, CameraType.SurfaceFollow, tank);
-            ThirdPersonCamera = new Camera(GraphicsDevice, CameraType.ThirdPerson, tank);
             if (Window != null)
                 Mouse.SetPosition(Window.ClientBounds.Width / 2, Window.ClientBounds.Height / 2);
 
@@ -39,6 +37,9 @@ namespace IP3D_TPF
 
             tank = new Tank(GraphicsDevice, Content, ChooseTank.tank);
             enemyTank = new Tank(GraphicsDevice, Content, ChooseTank.enemyTank);
+
+            SurfaceFollowCamera = new Camera(GraphicsDevice, CameraType.SurfaceFollow, tank);
+            ThirdPersonCamera = new Camera(GraphicsDevice, CameraType.ThirdPerson, tank);
         }
 
         protected override void UnloadContent()

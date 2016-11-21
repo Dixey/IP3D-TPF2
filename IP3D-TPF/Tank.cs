@@ -209,25 +209,25 @@ namespace IP3D_TPF
             }
 
             //Limitar o movimento aos limites do terreno
-            if (position.X - 2 < 0)
+            if (position.X - 1 < 0)
             {
                 position.X = positionBackX;
                 position.Z = positionBackZ;
             }
 
-            if (position.Z - 2 < 0)
+            if (position.Z - 1 < 0)
             {
                 position.X = positionBackX;
                 position.Z = positionBackZ;
             }
 
-            if (position.X + 2 > field.width)
+            if (position.X + 1 > field.width)
             {
                 position.X = positionBackX;
                 position.Z = positionBackZ;
             }
 
-            if (position.Z + 2 > field.height)
+            if (position.Z + 1 > field.height)
             {
                 position.X = positionBackX;
                 position.Z = positionBackZ;
