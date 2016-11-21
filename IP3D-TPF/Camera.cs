@@ -14,7 +14,8 @@ namespace IP3D_TPF
     public enum CameraType
     {
         ThirdPerson,
-        SurfaceFollow
+        SurfaceFollow,
+        Free
     }
     
     public class Camera
@@ -64,6 +65,11 @@ namespace IP3D_TPF
             if(keys.IsKeyDown(Keys.F12))
             {
                 c = CameraType.SurfaceFollow;
+            }
+
+            if(keys.IsKeyDown(Keys.F11))
+            {
+                c = CameraType.Free;
             }
 
             MouseState mouse = Mouse.GetState();
@@ -201,15 +207,20 @@ namespace IP3D_TPF
 
             return 0;
         }
-        /*
+
+        public void FreeCamera()
+        {
+            position = new Vector3(100, 200, 100);
+        }
+
         public void ThirdPersonCamera(Vector3 pos, Tank tank, Vector3 postank)
         {
             thirdPersonReference = new Vector3(0, 100, -100);
             rotationMatrix = Matrix.CreateRotationY(tank.yaw);
             Vector3 tranformedReference = Vector3.Transform(thirdPersonReference, rotationMatrix);
-            pos = tranformedReference + tank.position;
-            viewMatrix = Matrix.CreateLookAt(pos, tank.position, new Vector3(0.0f, 1.0f, 0.0f));
+            pos = tranformedReference + postank;
+            viewMatrix = Matrix.CreateLookAt(pos, postank, new Vector3(0.0f, 1.0f, 0.0f));
             projectionMatrix = Matrix.CreatePerspectiveFieldOfView(MathHelper.ToRadians(45f), aspectRatio, 0.1f, 1000f);
-        }*/
+        }
     }
 }
