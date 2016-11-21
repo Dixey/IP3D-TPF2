@@ -206,25 +206,25 @@ namespace IP3D_TPF
             }
 
             //Limitar o movimento aos limites do terreno
-            if (position.X - 1 < 0)
+            if (position.X - 2 < 0)
             {
                 position.X = positionBackX;
                 position.Z = positionBackZ;
             }
 
-            if (position.Z - 1 < 0)
+            if (position.Z - 2 < 0)
             {
                 position.X = positionBackX;
                 position.Z = positionBackZ;
             }
 
-            if (position.X + 1 > field.width)
+            if (position.X + 2 > field.width)
             {
                 position.X = positionBackX;
                 position.Z = positionBackZ;
             }
 
-            if (position.Z + 1 > field.height)
+            if (position.Z + 2 > field.height)
             {
                 position.X = positionBackX;
                 position.Z = positionBackZ;
@@ -271,7 +271,6 @@ namespace IP3D_TPF
 
             //transformação da direção através da rotationMatrix
             direction = Vector3.Transform(direction, rotationMatrix);
-            Debug.WriteLine(n);
             right = Vector3.Cross(direction, n);
             d = Vector3.Cross(n, right);
 

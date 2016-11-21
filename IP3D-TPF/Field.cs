@@ -90,7 +90,8 @@ namespace IP3D_TPF
                 {
                     vertices[contador] = new VertexPositionNormalTexture(new Vector3((float)x,
                             (float)(heightMapColors[x + z * heightMap.Width].R) / 20.0f,
-                            (float)z), Vector3.Up,
+                            (float)z), 
+                            Vector3.Up,
                             new Vector2(x, z));
                     contador++;
                 }
@@ -174,6 +175,7 @@ namespace IP3D_TPF
                     n8.Normalize();
 
                     Vector3 n = (n1 + n2 + n3 + n4 + n5 + n6 + n7 + n8) / 8.0f;
+                    n.Normalize();
                     vertices[(x + z * heightMap.Width)].Normal = n;
                 }
             }
