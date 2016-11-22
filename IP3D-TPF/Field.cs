@@ -394,6 +394,18 @@ namespace IP3D_TPF
             return Vector3.Zero;
         }*/
 
+        public Vector3 ThirdPersonCamera(Vector3 posTank, Vector3 direction)
+        {
+            Vector3 cameraPosition;
+            Vector3 aux;
+
+            cameraPosition = (posTank + 10f * direction);
+            aux = vertices[(int)cameraPosition.X + (int)cameraPosition.Z * 128].Position;
+
+            cameraPosition.Y = SurfaceFollow(aux) + 5f;
+            return cameraPosition;
+        }
+
         public void Draw(GraphicsDevice device, Camera camera)
         {
             //associar a view e a projection do effect à viewMatrix e projectionMatrix da câmera

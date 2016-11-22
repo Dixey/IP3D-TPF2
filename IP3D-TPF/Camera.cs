@@ -21,25 +21,16 @@ namespace IP3D_TPF
     public class Camera
     {
         //Variáveis da classe Camera
-        float yaw, pitch, pitchAnterior, aspectRatio, scale = 0f, speed = 0.2f;
+        float yaw, pitch, pitchAnterior, aspectRatio, scale = 0f, speed = 0.1f;
         public Vector3 position, direction, target, thirdPersonReference;
         public Matrix viewMatrix, projectionMatrix, rotationMatrix;
-        BasicEffect effect; 
+        BasicEffect effect;
+        public int idCamera = 0;
 
-        public Camera(GraphicsDevice device, CameraType camera, Tank tank)
+        public Camera(GraphicsDevice device, CameraType camera, Field field, Tank tank)
         {
             //guardar o aspectRatio do ecrã de jogo numa variável
             aspectRatio = (float)(device.Viewport.Width / device.Viewport.Height);
-
-            if(camera == CameraType.ThirdPerson)
-            {
-                ThirdPersonCamera(position, tank, tank.position);
-            }
-
-            if(camera == CameraType.Free)
-            {
-                FreeCamera();
-            }
 
             //coordenadas da posição inicial da câmera
             position = new Vector3(10f, 10f, 50.0f);
@@ -57,7 +48,7 @@ namespace IP3D_TPF
             effect.VertexColorEnabled = true;
         }
 
-        public void Update(GraphicsDevice device, GameTime gameTime, Field field, CameraType c)
+        public void Update(GraphicsDevice device, GameTime gameTime, Field field, Tank tank, CameraType c)
         {
             //variáveis para usar tanto o teclado como o rato
             KeyboardState keys = Keyboard.GetState();
@@ -65,16 +56,19 @@ namespace IP3D_TPF
             if(keys.IsKeyDown(Keys.F1))
             {
                 c = CameraType.ThirdPerson;
+                idCamera = 1;
             }
 
             if(keys.IsKeyDown(Keys.F12))
             {
                 c = CameraType.SurfaceFollow;
+                idCamera = 0;
             }
 
             if(keys.IsKeyDown(Keys.F11))
             {
                 c = CameraType.Free;
+                idCamera = 2;
             }
 
             MouseState mouse = Mouse.GetState();
@@ -118,14 +112,12 @@ namespace IP3D_TPF
             //Movimento da Câmera
             if (keys.IsKeyDown(Keys.NumPad8))
             {
-                position.X += direction.X * speed;
-                position.Z += direction.Z * speed;
+                position += direction * speed;
             }
 
             if (keys.IsKeyDown(Keys.NumPad5))
             {
-                position.X -= direction.X * speed;
-                position.Z -= direction.Z * speed;
+                position -= direction * speed;
             }
 
             if (keys.IsKeyDown(Keys.NumPad6))
@@ -165,11 +157,26 @@ namespace IP3D_TPF
             }
 
             //chamada da função SurfaceFollow
-            position.Y = SurfaceFollow(position) + 2f;
             target = position + direction;
 
-            //definição da viewMatrix e da projectionMatrix
-            viewMatrix = Matrix.CreateLookAt(position, target, Vector3.Up);
+            if(idCamera == 0)
+            {
+                position.Y = SurfaceFollow(position) + 2f;
+                viewMatrix = Matrix.CreateLookAt(position, target, Vector3.Up);
+            }
+
+            if (idCamera == 1)
+            {
+                position = field.ThirdPersonCamera(tank.position, tank.direction);
+                viewMatrix = Matrix.CreateLookAt(position, tank.position + direction, Vector3.Up);
+            }
+
+            if(idCamera == 2)
+            {              
+                viewMatrix = Matrix.CreateLookAt(position, target, Vector3.Up);
+            }
+
+            //definição da projectionMatrix
             projectionMatrix = Matrix.CreatePerspectiveFieldOfView(MathHelper.ToRadians(45f), aspectRatio, 0.1f, 1000f);
         }
 
@@ -218,14 +225,16 @@ namespace IP3D_TPF
             position = new Vector3(100, 200, 100);
         }
 
-        public void ThirdPersonCamera(Vector3 camPos, Tank tank, Vector3 postank)
+       /* public void ThirdPersonCamera(Vector3 camPos, Tank tank, Vector3 postank)
         {
-            thirdPersonReference = new Vector3(0, tank.position.Y + 100, -100);
+            thirdPersonReference = new Vector3(0, tank.position.Y + 10, -100);
             rotationMatrix = Matrix.CreateRotationY(tank.yaw);
             Vector3 tranformedReference = Vector3.Transform(thirdPersonReference, rotationMatrix);
             camPos = tranformedReference + postank;
             viewMatrix = Matrix.CreateLookAt(camPos, postank + rotationMatrix.Forward * 3, Vector3.Cross(rotationMatrix.Left, tranformedReference));
             projectionMatrix = Matrix.CreatePerspectiveFieldOfView(MathHelper.ToRadians(45f), aspectRatio, 0.1f, 1000f);
-        }
+        }*/
+
+        
     }
 }

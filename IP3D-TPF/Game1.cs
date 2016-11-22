@@ -38,8 +38,8 @@ namespace IP3D_TPF
             tank = new Tank(GraphicsDevice, Content, ChooseTank.tank);
             enemyTank = new Tank(GraphicsDevice, Content, ChooseTank.enemyTank);
 
-            SurfaceFollowCamera = new Camera(GraphicsDevice, CameraType.SurfaceFollow, tank);
-            ThirdPersonCamera = new Camera(GraphicsDevice, CameraType.ThirdPerson, tank);
+            SurfaceFollowCamera = new Camera(GraphicsDevice, CameraType.SurfaceFollow, field, tank);
+            ThirdPersonCamera = new Camera(GraphicsDevice, CameraType.ThirdPerson, field, tank);
         }
 
         protected override void UnloadContent()
@@ -52,8 +52,8 @@ namespace IP3D_TPF
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            SurfaceFollowCamera.Update(GraphicsDevice, gameTime, field, c);
-
+            SurfaceFollowCamera.Update(GraphicsDevice, gameTime, field, tank, CameraType.SurfaceFollow);
+            ThirdPersonCamera.Update(GraphicsDevice, gameTime, field, tank, CameraType.ThirdPerson);
             tank.Move(field, ChooseTank.tank);
             enemyTank.Move(field, ChooseTank.enemyTank);
 
