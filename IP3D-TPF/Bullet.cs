@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace IP3D_TPF
 {
     public class Bullet
-    {
+    {     
         BasicEffect effect;
         public Bullet(GraphicsDevice device)
         {
