@@ -9,6 +9,7 @@ namespace IP3D_TPF
 {
     public class ParticleSystem
     {
+
         BasicEffect effect;
         public ParticleSystem(GraphicsDevice device)
         {
