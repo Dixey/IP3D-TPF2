@@ -399,10 +399,10 @@ namespace IP3D_TPF
             Vector3 cameraPosition;
             Vector3 aux;
 
-            cameraPosition = (posTank + 10f * direction);
+            cameraPosition = (posTank + 15f * direction);
             aux = vertices[(int)cameraPosition.X + (int)cameraPosition.Z * 128].Position;
 
-            cameraPosition.Y = SurfaceFollow(aux) + 5f;
+            cameraPosition.Y = SurfaceFollow(aux) + 10f;
             return cameraPosition;
         }
 

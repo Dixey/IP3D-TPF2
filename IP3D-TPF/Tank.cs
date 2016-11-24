@@ -41,7 +41,7 @@ namespace IP3D_TPF
         Matrix wordlMatrix, rotationMatrix, r;
         public float scale, aspectRatio, yaw, pitch, speed = 0.1f;
         float wheelRotationValue = 0f, steerRotationValue = 0f, turretRotationValue = 0f, cannonRotationValue = 0f;
-        public Vector3 position, direction, d, n, right;
+        public Vector3 position, direction, d, n, right, raio;
         BoundingSphere bsphere;
 
         public Tank(GraphicsDevice device, ContentManager content, ChooseTank tank)
@@ -262,6 +262,19 @@ namespace IP3D_TPF
 
             position.Y = field.SurfaceFollow(position) + 0.15f;
         }
+
+        /*public bool Colisão(float raioTank1, float raioTank2)
+        {
+            bool colisão = false;
+            float d;
+
+            d = (raioTank1 - raioTank2).Length;
+
+            if (d < raioTank1 + raioTank2)
+                colisão = true;
+
+            return colisão;
+        }*/
 
         public void Draw(Camera camera, Field field)
         {

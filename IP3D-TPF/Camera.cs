@@ -52,27 +52,26 @@ namespace IP3D_TPF
         {
             //variáveis para usar tanto o teclado como o rato
             KeyboardState keys = Keyboard.GetState();
+            MouseState mouse = Mouse.GetState();
 
-            if(keys.IsKeyDown(Keys.F1))
+            if (keys.IsKeyDown(Keys.F1))
             {
                 c = CameraType.ThirdPerson;
                 idCamera = 1;
             }
 
-            if(keys.IsKeyDown(Keys.F12))
+            if(keys.IsKeyDown(Keys.F2))
             {
                 c = CameraType.SurfaceFollow;
                 idCamera = 0;
             }
 
-            if(keys.IsKeyDown(Keys.F11))
+            if(keys.IsKeyDown(Keys.F3))
             {
                 c = CameraType.Free;
                 idCamera = 2;
             }
-
-            MouseState mouse = Mouse.GetState();
-
+           
             //variáveis da posição do rato, diferença e o centro do ecrã
             Vector2 posMouse, diference = new Vector2(0f, 0f), center = new Vector2(device.Viewport.Width / 2, device.Viewport.Height / 2);
 
@@ -101,13 +100,9 @@ namespace IP3D_TPF
             {
                 pitch = pitchAnterior;
             }
-            
-            //definição da rotationMatrix através do yaw e do pitch
-            rotationMatrix = Matrix.CreateFromYawPitchRoll(yaw, pitch, 0);
 
             //transformação da direção através da rotationMatrix
             direction = Vector3.Transform(direction, rotationMatrix);
-
 
             //Movimento da Câmera
             if (keys.IsKeyDown(Keys.NumPad8))
@@ -161,80 +156,28 @@ namespace IP3D_TPF
 
             if(idCamera == 0)
             {
-                position.Y = SurfaceFollow(position) + 2f;
+                position.Y = field.SurfaceFollow(position) + 2f;
+                //definição da rotationMatrix através do yaw e do pitch
+                rotationMatrix = Matrix.CreateFromYawPitchRoll(yaw, pitch, 0);
                 viewMatrix = Matrix.CreateLookAt(position, target, Vector3.Up);
             }
 
             if (idCamera == 1)
             {
                 position = field.ThirdPersonCamera(tank.position, tank.direction);
-                viewMatrix = Matrix.CreateLookAt(position, tank.position + direction, Vector3.Up);
+                //viewMatrix = Matrix.CreateLookAt(tank.position - direction + tank.n * 2f, tank.position + tank.n * 2f, Vector3.Up);
+                viewMatrix = Matrix.CreateLookAt(position, tank.position - direction * 2f, Vector3.Up);
             }
 
             if(idCamera == 2)
-            {              
+            {
+                //definição da rotationMatrix através do yaw e do pitch
+                rotationMatrix = Matrix.CreateFromYawPitchRoll(yaw, pitch, 0);
                 viewMatrix = Matrix.CreateLookAt(position, target, Vector3.Up);
             }
 
             //definição da projectionMatrix
             projectionMatrix = Matrix.CreatePerspectiveFieldOfView(MathHelper.ToRadians(45f), aspectRatio, 0.1f, 1000f);
-        }
-
-        //função utilizada para que a camera faça surface follow
-        public float SurfaceFollow(Vector3 pos)
-        {
-            //4 pontos e 3 vetores
-            float yA, yB, yC, yD;
-            Vector3 vetor2, vetor3, vetor4;
-
-            vetor2 = Vector3.Zero;
-            vetor3 = Vector3.Zero;
-            vetor4 = Vector3.Zero;
-
-            for (int i = 0; i < Field.vertices.Length; i++)
-            {
-                //definição do 4º vetor
-                Vector3 vetor1 = Field.vertices[i].Position;
-                if ((int)pos.X == vetor1.X && (int)pos.Z == vetor1.Z)
-                {
-                    vetor2 = Field.vertices[i + 1].Position;
-                    vetor3 = Field.vertices[i + 128].Position;
-                    vetor4 = Field.vertices[i + 128 + 1].Position;
-
-                    //igualar os pontos definidos em cima aos Y's dos vetores
-                    yA = vetor1.Y;
-                    yB = vetor2.Y;
-                    yC = vetor3.Y;
-                    yD = vetor4.Y;
-
-                    //interpolação bilinear através da posição, das alturas e dos vetores
-                    float yAB = (1 - (position.X - vetor1.X)) * yA + (position.X - vetor1.X) * yB;
-                    float yCD = (1 - (position.X - vetor3.X)) * yC + (position.X - vetor3.X) * yD;
-                    float y = (1 - (position.Z - vetor1.Z)) * yAB + (position.Z - vetor1.Z) * yCD;
-
-                    //queremos que a função nos retorne o y
-                    return y;
-                }
-            }
-
-            return 0;
-        }
-
-        public void FreeCamera()
-        {
-            position = new Vector3(100, 200, 100);
-        }
-
-       /* public void ThirdPersonCamera(Vector3 camPos, Tank tank, Vector3 postank)
-        {
-            thirdPersonReference = new Vector3(0, tank.position.Y + 10, -100);
-            rotationMatrix = Matrix.CreateRotationY(tank.yaw);
-            Vector3 tranformedReference = Vector3.Transform(thirdPersonReference, rotationMatrix);
-            camPos = tranformedReference + postank;
-            viewMatrix = Matrix.CreateLookAt(camPos, postank + rotationMatrix.Forward * 3, Vector3.Cross(rotationMatrix.Left, tranformedReference));
-            projectionMatrix = Matrix.CreatePerspectiveFieldOfView(MathHelper.ToRadians(45f), aspectRatio, 0.1f, 1000f);
-        }*/
-
-        
+        }     
     }
 }
