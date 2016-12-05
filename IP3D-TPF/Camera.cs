@@ -74,7 +74,7 @@ namespace IP3D_TPF
            
             //variáveis da posição do rato, diferença e o centro do ecrã
             Vector2 posMouse, diference = new Vector2(0f, 0f), center = new Vector2(device.Viewport.Width / 2, device.Viewport.Height / 2);
-
+            Vector3 n;
             //posição inicial da direção
             direction = new Vector3(0f, 0f, -1f);
 
@@ -101,9 +101,10 @@ namespace IP3D_TPF
                 pitch = pitchAnterior;
             }
 
+            rotationMatrix = Matrix.CreateFromYawPitchRoll(yaw, pitch, 0);
             //transformação da direção através da rotationMatrix
             direction = Vector3.Transform(direction, rotationMatrix);
-
+            direction.Normalize();
             //Movimento da Câmera
             if (keys.IsKeyDown(Keys.NumPad8))
             {
@@ -154,25 +155,27 @@ namespace IP3D_TPF
             //chamada da função SurfaceFollow
             target = position + direction;
 
-            if(idCamera == 0)
+            if (idCamera == 0)
             {
                 position.Y = field.SurfaceFollow(position) + 2f;
+                target = position + direction;
                 //definição da rotationMatrix através do yaw e do pitch
-                rotationMatrix = Matrix.CreateFromYawPitchRoll(yaw, pitch, 0);
+
                 viewMatrix = Matrix.CreateLookAt(position, target, Vector3.Up);
             }
 
             if (idCamera == 1)
             {
-                position = field.ThirdPersonCamera(tank.position, tank.direction);
-                //viewMatrix = Matrix.CreateLookAt(tank.position - direction + tank.n * 2f, tank.position + tank.n * 2f, Vector3.Up);
-                viewMatrix = Matrix.CreateLookAt(position, tank.position - direction * 2f, Vector3.Up);
+                //position = field.ThirdPersonCamera(tank.position, tank.direction);
+                position = tank.position;
+                direction = -tank.direction;
+                n = field.NormalFollow(position);
+                viewMatrix = Matrix.CreateLookAt(position - 10 * direction + n * 5f, position, Vector3.Up);
             }
 
             if(idCamera == 2)
             {
                 //definição da rotationMatrix através do yaw e do pitch
-                rotationMatrix = Matrix.CreateFromYawPitchRoll(yaw, pitch, 0);
                 viewMatrix = Matrix.CreateLookAt(position, target, Vector3.Up);
             }
 

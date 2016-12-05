@@ -263,18 +263,18 @@ namespace IP3D_TPF
             position.Y = field.SurfaceFollow(position) + 0.15f;
         }
 
-        /*public bool Colisão(float raioTank1, float raioTank2)
+        public bool Colisão(float raioTank1, float raioTank2)
         {
             bool colisão = false;
             float d;
 
-            d = (raioTank1 - raioTank2).Length;
+            d = (raioTank1 - raioTank2);
 
             if (d < raioTank1 + raioTank2)
                 colisão = true;
 
             return colisão;
-        }*/
+        }
 
         public void Draw(Camera camera, Field field)
         {
