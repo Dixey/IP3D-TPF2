@@ -394,7 +394,7 @@ namespace IP3D_TPF
             return Vector3.Zero;
         }*/
 
-        public Vector3 ThirdPersonCamera(Vector3 posTank, Vector3 direction)
+        /*public Vector3 ThirdPersonCamera(Vector3 posTank, Vector3 direction)
         {
             Vector3 cameraPosition;
             Vector3 aux;
@@ -404,7 +404,7 @@ namespace IP3D_TPF
 
             cameraPosition.Y = SurfaceFollow(aux) + 10f;
             return cameraPosition;
-        }
+        }*/
 
         public void Draw(GraphicsDevice device, Camera camera)
         {
