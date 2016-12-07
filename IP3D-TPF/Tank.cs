@@ -39,9 +39,10 @@ namespace IP3D_TPF
         Matrix[] boneTransforms;
 
         Matrix wordlMatrix, rotationMatrix, r;
-        public float scale, aspectRatio, yaw, pitch, speed = 0.1f;
+        public float scale, aspectRatio, yaw, pitch, speed = 0.2f;
         float wheelRotationValue = 0f, steerRotationValue = 0f, turretRotationValue = 0f, cannonRotationValue = 0f;
-        public Vector3 position, direction, d, n, right, raio;
+        public Vector3 position, direction, d, n, right;
+        bool colisão = false;
         BoundingSphere bsphere;
 
         public Tank(GraphicsDevice device, ContentManager content, ChooseTank tank)
@@ -156,6 +157,14 @@ namespace IP3D_TPF
 
                     wheelRotationValue -= 0.2f;
                 }
+
+                //colisão = Colisão(position, raiotank1, raiotank2);
+
+                /*if (colisão == true)
+                {
+                    position.X = positionBackX;
+                    position.Z = positionBackZ;
+                }*/
             }
 
             if (tank == ChooseTank.enemyTank)
@@ -261,14 +270,22 @@ namespace IP3D_TPF
             }
 
             position.Y = field.SurfaceFollow(position) + 0.15f;
+
+            //colisão = Colisão(position, raiotank1, raiotank2);
+
+            /*if(colisão == true)
+            {
+                position.X = positionBackX;
+                position.Z = positionBackZ;
+            }*/
         }
 
-        public bool Colisão(float raioTank1, float raioTank2)
+        public bool Colisão(Vector3 pos1, Vector3 pos2, float raioTank1, float raioTank2)
         {
             bool colisão = false;
             float d;
 
-            d = (raioTank1 - raioTank2);
+            d = Vector3.Distance(pos1, pos2);
 
             if (d < raioTank1 + raioTank2)
                 colisão = true;

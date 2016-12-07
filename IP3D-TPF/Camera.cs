@@ -170,7 +170,7 @@ namespace IP3D_TPF
                 position = tank.position;
                 direction = -tank.direction;
                 n = field.NormalFollow(position);
-                viewMatrix = Matrix.CreateLookAt(position - 10 * direction + n * 5f, position, Vector3.Up);
+                viewMatrix = Matrix.CreateLookAt(position - 10f * direction + n * 5f, position, Vector3.Up);
             }
 
             if(idCamera == 2)

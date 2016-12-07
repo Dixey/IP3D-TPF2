@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
 #endregion
 
 namespace IP3D_TPF
@@ -11,9 +12,11 @@ namespace IP3D_TPF
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         Camera SurfaceFollowCamera, ThirdPersonCamera;
-        CameraType c;
         Field field;
         Tank tank, enemyTank;
+        ClsPyramidVB pyramid;
+        Vector3 positionBack1 = Vector3.Zero;
+        Vector3 positionBack2 = Vector3.Zero;
 
         public Game1()
         {
@@ -34,7 +37,7 @@ namespace IP3D_TPF
                 Mouse.SetPosition(Window.ClientBounds.Width / 2, Window.ClientBounds.Height / 2);
 
             field = new Field(GraphicsDevice, Content);
-
+            pyramid = new ClsPyramidVB(GraphicsDevice, 20, 3f, 2f);
             tank = new Tank(GraphicsDevice, Content, ChooseTank.tank);
             enemyTank = new Tank(GraphicsDevice, Content, ChooseTank.enemyTank);
 
@@ -52,10 +55,39 @@ namespace IP3D_TPF
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
+            bool colisão1 = false;
+            bool colisão2 = false;
+            float raiotank1 = 2f, raiotank2 = 2f;
+            
+
             SurfaceFollowCamera.Update(GraphicsDevice, gameTime, field, tank, CameraType.SurfaceFollow);
             ThirdPersonCamera.Update(GraphicsDevice, gameTime, field, tank, CameraType.ThirdPerson);
             tank.Move(field, ChooseTank.tank);
             enemyTank.Move(field, ChooseTank.enemyTank);
+            pyramid.Update(tank.position + 0.1f * tank.direction);
+
+            colisão1 = tank.Colisão(tank.position, enemyTank.position, raiotank1, raiotank2);
+            colisão2 = tank.Colisão(enemyTank.position, tank.position, raiotank1, raiotank2);
+
+            if(colisão1 == false)
+            {
+                positionBack1 = tank.position;
+            }
+
+            else if (colisão1 == true)
+            {
+                tank.position = positionBack1;
+            }
+
+            if (colisão2 == false)
+            {
+                positionBack2 = enemyTank.position;
+            }
+
+            else if (colisão2 == true)
+            {
+                enemyTank.position = positionBack2;
+            }
 
             if (Window != null)
                 Mouse.SetPosition(Window.ClientBounds.Width / 2, Window.ClientBounds.Height / 2);
@@ -70,6 +102,7 @@ namespace IP3D_TPF
             field.Draw(GraphicsDevice, SurfaceFollowCamera);
             tank.Draw(SurfaceFollowCamera, field);
             enemyTank.Draw(SurfaceFollowCamera, field);
+            //pyramid.Draw(GraphicsDevice, SurfaceFollowCamera);
             base.Draw(gameTime);
         }
     }
