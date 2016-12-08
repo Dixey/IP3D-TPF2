@@ -14,7 +14,7 @@ namespace IP3D_TPF
         Camera SurfaceFollowCamera, ThirdPersonCamera;
         Field field;
         Tank tank, enemyTank;
-        ClsPyramidVB pyramid;
+        Bullet bullet;
         Vector3 positionBack1 = Vector3.Zero;
         Vector3 positionBack2 = Vector3.Zero;
 
@@ -37,7 +37,6 @@ namespace IP3D_TPF
                 Mouse.SetPosition(Window.ClientBounds.Width / 2, Window.ClientBounds.Height / 2);
 
             field = new Field(GraphicsDevice, Content);
-            pyramid = new ClsPyramidVB(GraphicsDevice, 20, 3f, 2f);
             tank = new Tank(GraphicsDevice, Content, ChooseTank.tank);
             enemyTank = new Tank(GraphicsDevice, Content, ChooseTank.enemyTank);
 
@@ -62,9 +61,8 @@ namespace IP3D_TPF
 
             SurfaceFollowCamera.Update(GraphicsDevice, gameTime, field, tank, CameraType.SurfaceFollow);
             ThirdPersonCamera.Update(GraphicsDevice, gameTime, field, tank, CameraType.ThirdPerson);
-            tank.Move(field, ChooseTank.tank);
-            enemyTank.Move(field, ChooseTank.enemyTank);
-            pyramid.Update(tank.position + 0.1f * tank.direction);
+            tank.Move(field, ChooseTank.tank, bullet, gameTime);
+            enemyTank.Move(field, ChooseTank.enemyTank, bullet, gameTime);
 
             colisão1 = tank.Colisão(tank.position, enemyTank.position, raiotank1, raiotank2);
             colisão2 = tank.Colisão(enemyTank.position, tank.position, raiotank1, raiotank2);
@@ -102,7 +100,7 @@ namespace IP3D_TPF
             field.Draw(GraphicsDevice, SurfaceFollowCamera);
             tank.Draw(SurfaceFollowCamera, field);
             enemyTank.Draw(SurfaceFollowCamera, field);
-            //pyramid.Draw(GraphicsDevice, SurfaceFollowCamera);
+            //bullet.Draw(GraphicsDevice, ThirdPersonCamera);
             base.Draw(gameTime);
         }
     }

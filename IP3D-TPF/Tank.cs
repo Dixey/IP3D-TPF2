@@ -42,13 +42,15 @@ namespace IP3D_TPF
         public float scale, aspectRatio, yaw, pitch, speed = 0.2f;
         float wheelRotationValue = 0f, steerRotationValue = 0f, turretRotationValue = 0f, cannonRotationValue = 0f;
         public Vector3 position, direction, d, n, right;
-        bool colisão = false;
         BoundingSphere bsphere;
+        List<Bullet> bullets;
 
         public Tank(GraphicsDevice device, ContentManager content, ChooseTank tank)
         {
             wordlMatrix = Matrix.Identity;
             r = Matrix.Identity;
+
+            bullets = new List<Bullet>();
 
             tankModel = content.Load<Model>("tank");
 
@@ -97,7 +99,7 @@ namespace IP3D_TPF
             boneTransforms = new Matrix[tankModel.Bones.Count];
         }
 
-        public void Move(Field field, ChooseTank tank)
+        public void Move(Field field, ChooseTank tank, Bullet bullet, GameTime gametime)
         {
             //posição inicial da direção
             direction = new Vector3(0f, 0f, -1f);
@@ -156,6 +158,18 @@ namespace IP3D_TPF
                     position += direction * speed;
 
                     wheelRotationValue -= 0.2f;
+                }
+
+                if(keys.IsKeyDown(Keys.Space))
+                {
+                    bullets.Add(bullet);
+
+                    bullet.Update(gametime);
+
+                    if(bullet.position.Y < 0)
+                    {
+                        bullets.Remove(bullet);
+                    }
                 }
 
                 //Limitar o movimento aos limites do terreno
