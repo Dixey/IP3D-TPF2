@@ -104,11 +104,11 @@ namespace IP3D_TPF
 
             float diference = MathHelper.ToRadians(10f);
 
-            float positionBackX = position.X;
-            float positionBackZ = position.Z;
+            Vector3 positionBack = position;
 
             KeyboardState keys = Keyboard.GetState();
 
+            //Tank
             if(tank == ChooseTank.tank)
             {
                 //movimento do tank e respetiva rotação das rodas
@@ -158,15 +158,29 @@ namespace IP3D_TPF
                     wheelRotationValue -= 0.2f;
                 }
 
-                //colisão = Colisão(position, raiotank1, raiotank2);
-
-                /*if (colisão == true)
+                //Limitar o movimento aos limites do terreno
+                if (position.X - 1 < 0)
                 {
-                    position.X = positionBackX;
-                    position.Z = positionBackZ;
-                }*/
+                    position = positionBack;
+                }
+
+                if (position.Z - 1 < 0)
+                {
+                    position = positionBack;
+                }
+
+                if (position.X + 1 > field.width)
+                {
+                    position = positionBack;
+                }
+
+                if (position.Z + 1 > field.height)
+                {
+                    position = positionBack;
+                }
             }
 
+            //Tank Inimigo
             if (tank == ChooseTank.enemyTank)
             {
                 //movimento do tank adversário
@@ -215,36 +229,32 @@ namespace IP3D_TPF
 
                     wheelRotationValue -= 0.2f;
                 }
-            }
 
-            //Limitar o movimento aos limites do terreno
-            if (position.X - 1 < 0)
-            {
-                position.X = positionBackX;
-                position.Z = positionBackZ;
-            }
+                //Limitar o movimento aos limites do terreno
+                if (position.X - 1 < 0)
+                {
+                    position = positionBack;
+                }
 
-            if (position.Z - 1 < 0)
-            {
-                position.X = positionBackX;
-                position.Z = positionBackZ;
-            }
+                if (position.Z - 1 < 0)
+                {
+                    position = positionBack;
+                }
 
-            if (position.X + 1 > field.width)
-            {
-                position.X = positionBackX;
-                position.Z = positionBackZ;
-            }
+                if (position.X + 1 > field.width)
+                {
+                    position = positionBack;
+                }
 
-            if (position.Z + 1 > field.height)
-            {
-                position.X = positionBackX;
-                position.Z = positionBackZ;
+                if (position.Z + 1 > field.height)
+                {
+                    position = positionBack;
+                }
             }
-
+           
             //movimento da torre e do canhão
 
-            if(keys.IsKeyDown(Keys.Up))
+            if (keys.IsKeyDown(Keys.Up))
             {
                 if (cannonRotationValue > -90f)
                     cannonRotationValue -= 0.8f;
@@ -270,14 +280,6 @@ namespace IP3D_TPF
             }
 
             position.Y = field.SurfaceFollow(position) + 0.15f;
-
-            //colisão = Colisão(position, raiotank1, raiotank2);
-
-            /*if(colisão == true)
-            {
-                position.X = positionBackX;
-                position.Z = positionBackZ;
-            }*/
         }
 
         public bool Colisão(Vector3 pos1, Vector3 pos2, float raioTank1, float raioTank2)
