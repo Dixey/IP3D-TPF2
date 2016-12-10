@@ -197,7 +197,7 @@ namespace IP3D_TPF
             //Tank Inimigo
             if (tank == ChooseTank.enemyTank)
             {
-                //movimento do tank adversário
+               /*//movimento do tank adversário
                 if (keys.IsKeyDown(Keys.J))
                 {
                     yaw += diference * speed;
@@ -242,7 +242,7 @@ namespace IP3D_TPF
                     position += direction * speed;
 
                     wheelRotationValue -= 0.2f;
-                }
+                }*/
 
                 //Limitar o movimento aos limites do terreno
                 if (position.X - 1 < 0)
@@ -307,6 +307,16 @@ namespace IP3D_TPF
                 colisão = true;
 
             return colisão;
+        }
+
+        public void EnemyFollow(Vector3 posEnemy, Vector3 posPlayer, Vector3 directionEnemy, Field field)
+        {
+            Vector3 target;
+            directionEnemy = posPlayer - posEnemy;
+            target = posPlayer + directionEnemy;
+            posEnemy += target * speed;
+            posEnemy.Y = field.SurfaceFollow(posEnemy) + 0.15f;
+            posEnemy.Normalize();
         }
 
         public void Draw(Camera camera, Field field)

@@ -62,7 +62,7 @@ namespace IP3D_TPF
             ThirdPersonCamera.Update(GraphicsDevice, gameTime, field, tank, CameraType.ThirdPerson);
             tank.Move(field, ChooseTank.tank, bullet, gameTime);
             enemyTank.Move(field, ChooseTank.enemyTank, bullet, gameTime);
-
+            enemyTank.EnemyFollow(enemyTank.position, tank.position, enemyTank.direction, field);
             colisão1 = tank.Colisão(tank.position, enemyTank.position, raiotank1, raiotank2);
             colisão2 = tank.Colisão(enemyTank.position, tank.position, raiotank1, raiotank2);
 
