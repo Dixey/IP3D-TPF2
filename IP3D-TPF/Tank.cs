@@ -183,12 +183,12 @@ namespace IP3D_TPF
                     position = positionBack;
                 }
 
-                if (position.X + 1 > field.width)
+                if (position.X + 2f > field.width)
                 {
                     position = positionBack;
                 }
 
-                if (position.Z + 1 > field.height)
+                if (position.Z + 2f > field.height)
                 {
                     position = positionBack;
                 }
