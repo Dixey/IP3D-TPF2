@@ -39,7 +39,7 @@ namespace IP3D_TPF
         Matrix[] boneTransforms;
 
         Matrix wordlMatrix, rotationMatrix, r;
-        public float scale, aspectRatio, yaw, pitch, speed = 0.2f;
+        public float scale, aspectRatio, yaw, pitch, speed = 0.1f;
         float wheelRotationValue = 0f, steerRotationValue = 0f, turretRotationValue = 0f, cannonRotationValue = 0f;
         public Vector3 position, direction, d, n, right;
         BoundingSphere bsphere;
@@ -49,6 +49,8 @@ namespace IP3D_TPF
         {
             wordlMatrix = Matrix.Identity;
             r = Matrix.Identity;
+
+            direction = new Vector3(0f, 0f, -1f);
 
             bullets = new List<Bullet>();
 
@@ -309,14 +311,25 @@ namespace IP3D_TPF
             return colisão;
         }
 
-        public void EnemyFollow(Vector3 posEnemy, Vector3 posPlayer, Vector3 directionEnemy, Field field)
+        public void EnemyFollow(Vector3 posPlayer, Vector3 directionPlayer, Field field, GameTime gametime)
         {
-            Vector3 target;
-            directionEnemy = posPlayer - posEnemy;
-            target = posPlayer + directionEnemy;
-            posEnemy += target * speed;
-            posEnemy.Y = field.SurfaceFollow(posEnemy) + 0.15f;
-            posEnemy.Normalize();
+            Vector3 target, vseek, a, newV;
+            target = posPlayer + directionPlayer;
+            vseek = target - position;
+            vseek.Normalize();
+            vseek = vseek * speed;
+            a = direction * speed - vseek;
+            a.Normalize();
+            newV = direction * speed + a * (float)gametime.ElapsedGameTime.TotalSeconds;
+            direction = newV;
+            direction.Normalize();
+            //Console.WriteLine(direction + " a " + a);     
+            position += direction * speed;
+            position.Y = field.SurfaceFollow(position) + 0.15f;
+            //Console.WriteLine(position);
+            //Console.WriteLine(posPlayer);
+            //Console.WriteLine("Position" + position);
+            //Console.WriteLine("vseek " + vseek);
         }
 
         public void Draw(Camera camera, Field field)

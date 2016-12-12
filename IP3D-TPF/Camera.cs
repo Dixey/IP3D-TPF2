@@ -79,9 +79,7 @@ namespace IP3D_TPF
             direction = new Vector3(0f, 0f, -1f);
 
             //guardar as coordenadas da posição e do pitch noutras variáveis para depois poder não saírem dos limites
-            float positionBackX = position.X;
-            float positionBackZ = position.Z;
-            float positionBackY = position.Y;
+            Vector3 positionBack = position;
             pitchAnterior = pitch;
 
             //definição da posição do rato
@@ -130,26 +128,22 @@ namespace IP3D_TPF
             //Usamos a mesma lógica do pitch, ou seja, guardamos a posição numa variável que guarda a posição anterior a essa
             if (position.X - 1 < 0)
             {
-                position.X = positionBackX;
-                position.Z = positionBackZ;
+                position = positionBack;
             }
 
             if (position.Z - 1 < 0)
             {
-                position.X = positionBackX;
-                position.Z = positionBackZ;
+                position = positionBack;
             }
 
             if (position.X + 1 > field.width)
             {
-                position.X = positionBackX;
-                position.Z = positionBackZ;
+                position = positionBack;
             }
 
             if (position.Z + 1 > field.height)
             {
-                position.X = positionBackX;
-                position.Z = positionBackZ;
+                position = positionBack;
             }
 
             //chamada da função SurfaceFollow
