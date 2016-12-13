@@ -196,6 +196,17 @@ namespace IP3D_TPF
                 }
 
                 position.Y = field.SurfaceFollow(position) + 0.15f;
+
+                //chamada da função NormalFollow
+                n = field.NormalFollow(position);
+
+                right = Vector3.Cross(direction, n);
+                d = Vector3.Cross(n, right);
+
+                r = Matrix.Identity;
+                r.Forward = d;
+                r.Up = n;
+                r.Right = right;
             }
         }
 
@@ -214,33 +225,39 @@ namespace IP3D_TPF
 
         public void EnemyUpdate(Vector3 posPlayer, Vector3 directionPlayer, Field field, GameTime gametime)
         {
-            Vector3 target, vseek, ac, newSpeed;
+            Vector3 target, vseek, a, newSpeed;
             Vector3 positionBack = position;
             KeyboardState keys = Keyboard.GetState();
+            bool isMoving = false, isTurning = false;
+            int turnId;
 
-            /*target = posPlayer + directionPlayer;
+            target = posPlayer + directionPlayer;
             vseek = target - position;
             vseek.Normalize();
             vseek = vseek * speed;
 
-            ac = direction * speed - vseek;
-            ac.Normalize();
+            //a = direction * speed - vseek;
+            //a = vseek - direction * speed;
+            //a.Normalize();
 
-            newSpeed = direction * speed + ac * (float)gametime.ElapsedGameTime.TotalSeconds;
+            //newSpeed = direction * speed + a * (float)gametime.ElapsedGameTime.TotalSeconds;
 
-            direction = newSpeed;
-            direction.Normalize();
+            //direction = newSpeed;
+            //direction.Normalize();
 
-            */
-
-            direction = Vector3.Normalize(posPlayer - position);
-            //definição da rotationMatrix através do yaw e do pitch
-            rotationMatrix = Matrix.CreateFromYawPitchRoll(yaw, 0, 0);
-
-            //transformação da direção através da rotationMatrix
-            direction = Vector3.Transform(direction, rotationMatrix);
+            direction = Vector3.Normalize(vseek);
 
             position += direction * speed/2;
+
+            if(position != Vector3.Zero)
+            {
+                isMoving = true;
+            }
+
+            if(direction != Vector3.Zero)
+            {
+                isTurning = true;
+            }
 
             //Limitar o movimento aos limites do terreno
             if (position.X - 1 < 0)
@@ -263,55 +280,50 @@ namespace IP3D_TPF
                 position = positionBack;
             }
 
-            //movimento da torre e do canhão
-            if (keys.IsKeyDown(Keys.Up))
+            if(isMoving == true)
             {
-                if (cannonRotationValue > -90f)
-                    cannonRotationValue -= 0.8f;
-                cannonBone.Transform = Matrix.CreateRotationX(MathHelper.ToRadians(cannonRotationValue)) * cannonTransform;
+                wheelRotationValue += 0.2f;
             }
 
-            if (keys.IsKeyDown(Keys.Down))
+            Console.WriteLine(direction);
+
+            if(isTurning == true)
             {
-                if (cannonRotationValue < 2.5f)
-                    cannonRotationValue += 0.8f;
-                cannonBone.Transform = Matrix.CreateRotationX(MathHelper.ToRadians(cannonRotationValue)) * cannonTransform;
+                if(direction.Z > 0)
+                {
+                    if (steerRotationValue < 0.5f)
+                    {
+                        steerRotationValue += 0.1f;
+                    }
+
+                    if (steerRotationValue > -0.5f)
+                    {
+                        steerRotationValue -= 0.1f;
+                    }
+                }
             }
 
-            if (keys.IsKeyDown(Keys.Left))
+            if(isTurning == false)
             {
-                turretRotationValue += 0.8f;
-                turretBone.Transform = Matrix.CreateRotationY(MathHelper.ToRadians(turretRotationValue)) * turretTransform;
-            }
-            if (keys.IsKeyDown(Keys.Right))
-            {
-                turretRotationValue -= 0.8f;
-                turretBone.Transform = Matrix.CreateRotationY(MathHelper.ToRadians(turretRotationValue)) * turretTransform;
+                steerRotationValue = 0f;
             }
 
             position.Y = field.SurfaceFollow(position) + 0.15f;
-        }
 
-        public void Draw(Camera camera, Field field)
-        {
-            direction = new Vector3(0f, 0f, -1f);
-            
             //chamada da função NormalFollow
             n = field.NormalFollow(position);
 
-            rotationMatrix = Matrix.CreateFromYawPitchRoll(yaw, 0, 0);
-
-            //transformação da direção através da rotationMatrix
-            direction = Vector3.Transform(direction, rotationMatrix);
-            right = Vector3.Cross(direction, n);
+            right = Vector3.Cross(-direction, n);
             d = Vector3.Cross(n, right);
 
             r = Matrix.Identity;
             r.Forward = d;
             r.Up = n;
             r.Right = right;
+        }
 
-
+        public void Draw(Camera camera, Field field)
+        {
             // Aplica uma transformação qualquer no bone Root, no canhão e na torre
             tankModel.Root.Transform = Matrix.CreateScale(scale) * r * Matrix.CreateTranslation(position);
 
