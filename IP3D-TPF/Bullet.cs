@@ -14,13 +14,19 @@ namespace IP3D_TPF
         Model bullet;
         Matrix worldMatrix;
         BasicEffect effect;
-        public Vector3 position, direction, target, origin;
+        public Vector3 position, direction, target, gravity;
 
         public Bullet(GraphicsDevice device, ContentManager content, Tank tank)
         {
             worldMatrix = Matrix.Identity;
             effect = new BasicEffect(device);
             bullet = content.Load<Model>("bullet");
+
+            effect.VertexColorEnabled = true;
+            effect.TextureEnabled = false;
+            effect.LightingEnabled = false;
+
+            gravity = new Vector3(0f, -9.8f, 0f);
 
             position = tank.position + 2f * tank.direction;
             target = position + 10f * tank.direction;
@@ -30,16 +36,23 @@ namespace IP3D_TPF
 
         public void Update(GameTime gametime)
         {
-            position += direction;
+            position += direction * gravity;
         }
 
         public void Draw(GraphicsDevice device, Camera camera)
         {
-            effect.World = worldMatrix;
-            effect.View = camera.viewMatrix;
-            effect.Projection = camera.projectionMatrix;
+            foreach(ModelMesh mesh in bullet.Meshes)
+            {
+                foreach(BasicEffect effect in mesh.Effects)
+                {
+                    effect.World = worldMatrix;
+                    effect.View = camera.viewMatrix;
+                    effect.Projection = camera.projectionMatrix;
+                    effect.EnableDefaultLighting();
+                }
 
-            effect.CurrentTechnique.Passes[0].Apply();
+                mesh.Draw();
+            }
         }
     }
 }

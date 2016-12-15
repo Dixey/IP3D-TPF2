@@ -247,7 +247,7 @@ namespace IP3D_TPF
 
             direction = Vector3.Normalize(vseek);
 
-            position += direction * speed/3;
+            position += direction * speed/4;
 
             if(position != Vector3.Zero)
             {
@@ -341,12 +341,15 @@ namespace IP3D_TPF
 
             // Aplica as transformações em cascata por todos os bones
             tankModel.CopyAbsoluteBoneTransformsTo(boneTransforms);
-            foreach (ModelMesh mesh in tankModel.Meshes) // Desenha o modelo
+
+            // Desenha o modelo
+            foreach (ModelMesh mesh in tankModel.Meshes) 
             {
                 foreach (BasicEffect effect in mesh.Effects)
                 {
                     effect.World = boneTransforms[mesh.ParentBone.Index];
-                    effect.View = camera.viewMatrix; effect.Projection = camera.projectionMatrix;
+                    effect.View = camera.viewMatrix;
+                    effect.Projection = camera.projectionMatrix;
                     effect.EnableDefaultLighting();
                 }
 

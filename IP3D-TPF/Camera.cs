@@ -100,9 +100,11 @@ namespace IP3D_TPF
             }
 
             rotationMatrix = Matrix.CreateFromYawPitchRoll(yaw, pitch, 0);
+
             //transformação da direção através da rotationMatrix
             direction = Vector3.Transform(direction, rotationMatrix);
             direction.Normalize();
+
             //Movimento da Câmera
             if (keys.IsKeyDown(Keys.NumPad8))
             {
@@ -153,8 +155,6 @@ namespace IP3D_TPF
             {
                 position.Y = field.SurfaceFollow(position) + 2f;
                 target = position + direction;
-                //definição da rotationMatrix através do yaw e do pitch
-
                 viewMatrix = Matrix.CreateLookAt(position, target, Vector3.Up);
             }
 

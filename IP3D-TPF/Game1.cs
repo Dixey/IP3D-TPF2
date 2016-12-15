@@ -39,7 +39,7 @@ namespace IP3D_TPF
             field = new Field(GraphicsDevice, Content);
             tank = new Tank(GraphicsDevice, Content, ChooseTank.tank);
             enemyTank = new Tank(GraphicsDevice, Content, ChooseTank.enemyTank);
-
+            bullet = new Bullet(GraphicsDevice, Content, tank);
             SurfaceFollowCamera = new Camera(GraphicsDevice, CameraType.SurfaceFollow, field, tank);
             ThirdPersonCamera = new Camera(GraphicsDevice, CameraType.ThirdPerson, field, tank);
         }
@@ -100,7 +100,7 @@ namespace IP3D_TPF
             field.Draw(GraphicsDevice, SurfaceFollowCamera);
             tank.Draw(SurfaceFollowCamera, field);
             enemyTank.Draw(SurfaceFollowCamera, field);
-            //bullet.Draw(GraphicsDevice, ThirdPersonCamera);
+            bullet.Draw(GraphicsDevice, ThirdPersonCamera);
             base.Draw(gameTime);
         }
     }
