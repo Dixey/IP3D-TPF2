@@ -160,7 +160,6 @@ namespace IP3D_TPF
 
             if (idCamera == 1)
             {
-                //position = field.ThirdPersonCamera(tank.position, tank.direction);
                 position = tank.position;
                 direction = -tank.direction;
                 n = field.NormalFollow(position);

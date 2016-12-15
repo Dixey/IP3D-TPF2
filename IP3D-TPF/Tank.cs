@@ -247,7 +247,7 @@ namespace IP3D_TPF
 
             direction = Vector3.Normalize(vseek);
 
-            position += direction * speed/2;
+            position += direction * speed/3;
 
             if(position != Vector3.Zero)
             {
@@ -284,8 +284,6 @@ namespace IP3D_TPF
             {
                 wheelRotationValue += 0.2f;
             }
-
-            Console.WriteLine(direction);
 
             if(isTurning == true)
             {

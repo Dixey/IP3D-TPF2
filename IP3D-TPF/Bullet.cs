@@ -14,15 +14,16 @@ namespace IP3D_TPF
         Model bullet;
         Matrix worldMatrix;
         BasicEffect effect;
-        public Vector3 position, direction, target;
+        public Vector3 position, direction, target, origin;
 
         public Bullet(GraphicsDevice device, ContentManager content, Tank tank)
         {
             worldMatrix = Matrix.Identity;
             effect = new BasicEffect(device);
-            bullet = content.Load<Model>("UntexturedSphere");
+            bullet = content.Load<Model>("bullet");
 
-            position = tank.position;
+            position = tank.position + 2f * tank.direction;
+            target = position + 10f * tank.direction;
             direction = target - position;
             direction.Normalize();
         }

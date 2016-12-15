@@ -82,7 +82,7 @@
     <None Include="Content\turret_alt_diff_tex_0.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Content\UntexturedSphere.fbx">
+    <None Include="Content\bullet.fbx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

@@ -73,6 +73,7 @@ namespace IP3D_TPF
             else if (colisão1 == true)
             {
                 tank.position = positionBack1;
+                tank.direction += tank.direction;
             }
 
             if (colisão2 == false)
@@ -83,6 +84,7 @@ namespace IP3D_TPF
             else if (colisão2 == true)
             {
                 enemyTank.position = positionBack2;
+                enemyTank.direction += enemyTank.direction;
             }
 
             if (Window != null)

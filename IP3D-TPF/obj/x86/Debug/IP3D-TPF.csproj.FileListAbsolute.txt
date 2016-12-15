@@ -207,4 +207,4 @@ C:\Users\Utilizador\Documents\IP3D-TPF2\IP3D-TPF\bin\Windows\x86\Debug\SharpDX.D
 C:\Users\Utilizador\Documents\IP3D-TPF2\IP3D-TPF\obj\x86\Debug\IP3D-TPF.csprojResolveAssemblyReference.cache
 C:\Users\Utilizador\Documents\IP3D-TPF2\IP3D-TPF\obj\x86\Debug\IP3D-TPF.exe
 C:\Users\Utilizador\Documents\IP3D-TPF2\IP3D-TPF\obj\x86\Debug\IP3D-TPF.pdb
-C:\Users\Utilizador\Documents\IP3D-TPF2\IP3D-TPF\bin\Windows\x86\Debug\Content\UntexturedSphere.fbx
+C:\Users\Utilizador\Documents\IP3D-TPF2\IP3D-TPF\bin\Windows\x86\Debug\Content\bullet.fbx
