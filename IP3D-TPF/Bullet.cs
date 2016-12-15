@@ -15,16 +15,19 @@ namespace IP3D_TPF
         Matrix worldMatrix;
         BasicEffect effect;
         public Vector3 position, direction, target, gravity;
+        float scale;
 
         public Bullet(GraphicsDevice device, ContentManager content, Tank tank)
         {
             worldMatrix = Matrix.Identity;
             effect = new BasicEffect(device);
-            bullet = content.Load<Model>("bullet");
+            bullet = content.Load<Model>("bala");
 
             effect.VertexColorEnabled = true;
             effect.TextureEnabled = false;
             effect.LightingEnabled = false;
+
+            scale = 0.005f;
 
             gravity = new Vector3(0f, -9.8f, 0f);
 
@@ -41,6 +44,8 @@ namespace IP3D_TPF
 
         public void Draw(GraphicsDevice device, Camera camera)
         {
+            bullet.Root.Transform = Matrix.CreateScale(scale) * Matrix.CreateTranslation(position);
+
             foreach(ModelMesh mesh in bullet.Meshes)
             {
                 foreach(BasicEffect effect in mesh.Effects)
