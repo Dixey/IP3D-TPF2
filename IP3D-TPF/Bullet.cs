@@ -16,6 +16,7 @@ namespace IP3D_TPF
         BasicEffect effect;
         public Vector3 position, direction, target, gravity;
         float scale;
+        public bool isShooting = false;
 
         public Bullet(GraphicsDevice device, ContentManager content, Tank tank)
         {
@@ -39,25 +40,35 @@ namespace IP3D_TPF
 
         public void Update(GameTime gametime)
         {
-            position += direction * gravity;
+            isShooting = true;
+            position += direction * (float)gametime.ElapsedGameTime.TotalSeconds;
+            direction += gravity * (float)gametime.ElapsedGameTime.TotalSeconds;
+
+            if(position.Y < 0)
+            {
+                isShooting = false;
+            }
         }
 
         public void Draw(GraphicsDevice device, Camera camera)
         {
-            bullet.Root.Transform = Matrix.CreateScale(scale) * Matrix.CreateTranslation(position);
+            //if (isShooting == true)
+            //{
+                bullet.Root.Transform = Matrix.CreateScale(scale) * Matrix.CreateTranslation(position);
 
-            foreach(ModelMesh mesh in bullet.Meshes)
-            {
-                foreach(BasicEffect effect in mesh.Effects)
+                foreach (ModelMesh mesh in bullet.Meshes)
                 {
-                    effect.World = worldMatrix;
-                    effect.View = camera.viewMatrix;
-                    effect.Projection = camera.projectionMatrix;
-                    effect.EnableDefaultLighting();
-                }
+                    foreach (BasicEffect effect in mesh.Effects)
+                    {
+                        effect.World = worldMatrix;
+                        effect.View = camera.viewMatrix;
+                        effect.Projection = camera.projectionMatrix;
+                        effect.EnableDefaultLighting();
+                    }
 
-                mesh.Draw();
-            }
+                    mesh.Draw();
+                }
+            //}
         }
     }
 }

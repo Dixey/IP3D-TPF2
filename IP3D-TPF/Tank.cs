@@ -164,14 +164,15 @@ namespace IP3D_TPF
 
                 if (keys.IsKeyDown(Keys.Space))
                 {
-                    bullets.Add(bullet);
+                    Shoot(gametime, bullet);
+                    /*bullets.Add(bullet);
 
                     bullet.Update(gametime);
 
                     if (bullet.position.Y < 0)
                     {
                         bullets.Remove(bullet);
-                    }
+                    }*/
                 }
 
                 //Limitar o movimento aos limites do terreno
@@ -221,6 +222,20 @@ namespace IP3D_TPF
                 colisão = true;
 
             return colisão;
+        }
+
+        public void Shoot(GameTime gametime, Bullet bullet)
+        {
+            bullets.Add(bullet);
+            bullet.Update(gametime);
+            Vector3 angle = Vector3.Zero;
+            float rotation = steerRotationValue;
+            rotation += turretRotationValue;
+            float hight = cannonRotationValue;
+
+            Matrix rotationMatrix = Matrix.CreateFromYawPitchRoll(rotation, MathHelper.ToRadians(90f) + hight, 0);
+
+            angle = Vector3.Transform(Vector3.Up, rotationMatrix);
         }
 
         public void EnemyUpdate(Vector3 posPlayer, Vector3 directionPlayer, Field field, GameTime gametime)

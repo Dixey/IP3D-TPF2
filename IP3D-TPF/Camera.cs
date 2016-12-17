@@ -126,28 +126,6 @@ namespace IP3D_TPF
                 position += Vector3.Cross(Vector3.Up, direction) * speed;
             }
 
-            //Limitar a posição dentro dos limites do terreno
-            //Usamos a mesma lógica do pitch, ou seja, guardamos a posição numa variável que guarda a posição anterior a essa
-            if (position.X - 1 < 0)
-            {
-                position = positionBack;
-            }
-
-            if (position.Z - 1 < 0)
-            {
-                position = positionBack;
-            }
-
-            if (position.X + 1 > field.width)
-            {
-                position = positionBack;
-            }
-
-            if (position.Z + 1 > field.height)
-            {
-                position = positionBack;
-            }
-
             //chamada da função SurfaceFollow
             target = position + direction;
 
@@ -155,6 +133,29 @@ namespace IP3D_TPF
             {
                 position.Y = field.SurfaceFollow(position) + 2f;
                 target = position + direction;
+
+                //Limitar a posição dentro dos limites do terreno
+                //Usamos a mesma lógica do pitch, ou seja, guardamos a posição numa variável que guarda a posição anterior a essa
+                if (position.X - 1 < 0)
+                {
+                    position = positionBack;
+                }
+
+                if (position.Z - 1 < 0)
+                {
+                    position = positionBack;
+                }
+
+                if (position.X + 1 > field.width)
+                {
+                    position = positionBack;
+                }
+
+                if (position.Z + 1 > field.height)
+                {
+                    position = positionBack;
+                }
+
                 viewMatrix = Matrix.CreateLookAt(position, target, Vector3.Up);
             }
 
