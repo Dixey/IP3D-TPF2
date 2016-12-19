@@ -57,11 +57,19 @@ namespace IP3D_TPF
             bool colisão1 = false;
             bool colisão2 = false;
             float raiotank1 = 2f, raiotank2 = 2f;
+            int res;
+            Random random = new Random();
 
             SurfaceFollowCamera.Update(GraphicsDevice, gameTime, field, tank, CameraType.SurfaceFollow);
             ThirdPersonCamera.Update(GraphicsDevice, gameTime, field, tank, CameraType.ThirdPerson);
             tank.Update(field, ChooseTank.tank, bullet, gameTime);
             enemyTank.EnemyUpdate(tank.position, tank.direction, field, gameTime);
+
+            if (bullet.isShooting == true)
+            {
+                bullet.Update(gameTime);
+            }
+
             colisão1 = tank.Colisão(tank.position, enemyTank.position, raiotank1, raiotank2);
             colisão2 = tank.Colisão(enemyTank.position, tank.position, raiotank1, raiotank2);
 
@@ -73,7 +81,6 @@ namespace IP3D_TPF
             else if (colisão1 == true)
             {
                 tank.position = positionBack1;
-                tank.direction += tank.direction;
             }
 
             if (colisão2 == false)
@@ -84,7 +91,6 @@ namespace IP3D_TPF
             else if (colisão2 == true)
             {
                 enemyTank.position = positionBack2;
-                enemyTank.direction += enemyTank.direction;
             }
 
             if (Window != null)

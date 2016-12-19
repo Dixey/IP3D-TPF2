@@ -97,52 +97,6 @@ namespace IP3D_TPF
                 }
             }
 
-            //for (int z = 0; z < heightMap.Height; z++)
-            //{
-            //    for (int x = 0; x < heightMap.Width; x++)
-            //    {
-            //        if ((x - 1) >= 0 && (z - 1) >= 0)
-            //        {
-            //            vector1 = vertices[(x - 1) + (z - 1) * heightMap.Width].Position - vertices[(x + z * heightMap.Width)].Position;
-            //        }
-
-            //        if ((x - 1) >= 0 && z >= 0)
-            //        {
-            //            vector2 = vertices[(x - 1) + z * heightMap.Width].Position - vertices[(x + z * heightMap.Width)].Position;
-            //        }
-
-            //        if ((x - 1) >= 0 && (z + 1) < 128)
-            //        {
-            //            vector3 = vertices[(x - 1) + (z + 1) * heightMap.Width].Position - vertices[(x + z * heightMap.Width)].Position;
-            //        }
-
-            //        if (x >= 0 && (z + 1) < 128)
-            //        {
-            //            vector4 = vertices[x + (z + 1) * heightMap.Width].Position - vertices[(x + z * heightMap.Width)].Position;
-            //        }
-
-            //        if ((x + 1 < 128) && (z + 1 < 128))
-            //        {
-            //            vector5 = vertices[(x + 1) + (z + 1) * heightMap.Width].Position - vertices[(x + z * heightMap.Width)].Position;
-            //        }
-
-            //        if ((x + 1 < 128) && (z < 128))
-            //        {
-            //            vector6 = vertices[(x + 1) + z * heightMap.Width].Position - vertices[(x + z * heightMap.Width)].Position;
-            //        }
-
-            //        if ((x < 128) && (z < 128))
-            //        {
-            //            vector7 = vertices[(x + z * heightMap.Width)].Position - vertices[(x + z * heightMap.Width)].Position;
-            //        }
-
-            //        if ((x + 1) < 128 && (z - 1 >= 0))
-            //        {
-            //            vector8 = vertices[(x + 1) + (z - 1) * heightMap.Width].Position - vertices[(x + z * heightMap.Width)].Position;
-            //        }
-            //    }
-            //}
-
             //vetores à volta do vértice do meio
             for (int z = 1; z < heightMap.Height - 1; z++)
             {
@@ -365,46 +319,6 @@ namespace IP3D_TPF
 
             return Vector3.Zero;
         }
-
-        /*public Vector3 NormalFollow(Vector3 pos)
-        {
-            //4 pontos
-            Vector3 yA, yB, yC, yD;
-            
-            //definição do 4º vetor
-            Vector3 vetor1 = Field.vertices[i].Position;
-
-            if ((int)pos.X == vetor1.X && (int)pos.Z == vetor1.Z)
-            {
-                //igualar os pontos definidos em cima às normais dos vetores
-                yA = Field.vertices[i].Normal;
-                yB = Field.vertices[i + 1].Normal;
-                yC = Field.vertices[i + 128].Normal;
-                yD = Field.vertices[i + 128 + 1].Normal;
-
-                // interpolacao das normais
-                Vector3 yAB = (1 - (pos.X - vetor1.X)) * yA + (pos.X - vetor1.X) * yB;
-                Vector3 yCD = (1 - (pos.X - vetor1.X)) * yC + (pos.X - vetor1.X) * yD;
-                Vector3 normal = (1 - (pos.Z - vetor1.Z)) * yAB + (pos.Z - vetor1.Z) * yCD;
-
-                //queremos que a função nos retorne a normal
-                return normal;
-            }
-
-            return Vector3.Zero;
-        }*/
-
-        /*public Vector3 ThirdPersonCamera(Vector3 posTank, Vector3 direction)
-        {
-            Vector3 cameraPosition;
-            Vector3 aux;
-
-            cameraPosition = (posTank + 15f * direction);
-            aux = vertices[(int)cameraPosition.X + (int)cameraPosition.Z * 128].Position;
-
-            cameraPosition.Y = SurfaceFollow(aux) + 10f;
-            return cameraPosition;
-        }*/
 
         public void Draw(GraphicsDevice device, Camera camera)
         {

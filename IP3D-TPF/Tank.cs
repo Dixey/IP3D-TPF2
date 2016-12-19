@@ -162,17 +162,36 @@ namespace IP3D_TPF
                     wheelRotationValue -= 0.2f;
                 }
 
-                if (keys.IsKeyDown(Keys.Space))
+                //movimento da torre e do canhão
+                if (keys.IsKeyDown(Keys.Up))
                 {
+                    if (cannonRotationValue > -90f)
+                        cannonRotationValue -= 0.8f;
+                    cannonBone.Transform = Matrix.CreateRotationX(MathHelper.ToRadians(cannonRotationValue)) * cannonTransform;
+                }
+
+                if (keys.IsKeyDown(Keys.Down))
+                {
+                    if (cannonRotationValue < 2.5f)
+                        cannonRotationValue += 0.8f;
+                    cannonBone.Transform = Matrix.CreateRotationX(MathHelper.ToRadians(cannonRotationValue)) * cannonTransform;
+                }
+
+                if (keys.IsKeyDown(Keys.Left))
+                {
+                    turretRotationValue += 0.8f;
+                    turretBone.Transform = Matrix.CreateRotationY(MathHelper.ToRadians(turretRotationValue)) * turretTransform;
+                }
+                if (keys.IsKeyDown(Keys.Right))
+                {
+                    turretRotationValue -= 0.8f;
+                    turretBone.Transform = Matrix.CreateRotationY(MathHelper.ToRadians(turretRotationValue)) * turretTransform;
+                }
+
+                //Shoot
+                if (keys.IsKeyDown(Keys.Space))
+                {   
                     Shoot(gametime, bullet);
-                    /*bullets.Add(bullet);
-
-                    bullet.Update(gametime);
-
-                    if (bullet.position.Y < 0)
-                    {
-                        bullets.Remove(bullet);
-                    }*/
                 }
 
                 //Limitar o movimento aos limites do terreno
@@ -197,6 +216,7 @@ namespace IP3D_TPF
                 }
 
                 position.Y = field.SurfaceFollow(position) + 0.15f;
+                Console.WriteLine("tank position: " + position);
 
                 //chamada da função NormalFollow
                 n = field.NormalFollow(position);
@@ -226,39 +246,32 @@ namespace IP3D_TPF
 
         public void Shoot(GameTime gametime, Bullet bullet)
         {
-            bullets.Add(bullet);
-            bullet.Update(gametime);
-            Vector3 angle = Vector3.Zero;
-            float rotation = steerRotationValue;
+            Vector3 shootDirection = Vector3.Zero;
+            float rotation = turretRotationValue;
+            float height = cannonRotationValue;
+
             rotation += turretRotationValue;
-            float hight = cannonRotationValue;
 
-            Matrix rotationMatrix = Matrix.CreateFromYawPitchRoll(rotation, MathHelper.ToRadians(90f) + hight, 0);
+            Matrix rotationMatrix = Matrix.CreateFromYawPitchRoll(rotation, MathHelper.ToRadians(90f) + height, 0);
 
-            angle = Vector3.Transform(Vector3.Up, rotationMatrix);
+            shootDirection = Vector3.Transform(Vector3.Up, rotationMatrix);
+            shootDirection.Normalize();
+            Console.WriteLine("Shoot Direction: " + shootDirection);
+
+            bullet.Initialize(position, shootDirection);
         }
 
         public void EnemyUpdate(Vector3 posPlayer, Vector3 directionPlayer, Field field, GameTime gametime)
         {
-            Vector3 target, vseek, a, newSpeed;
+            Vector3 target, vseek;
             Vector3 positionBack = position;
             KeyboardState keys = Keyboard.GetState();
-            bool isMoving = false, isTurning = false;
-            int turnId;
+            bool isMoving = false;
 
             target = posPlayer + directionPlayer;
             vseek = target - position;
             vseek.Normalize();
             vseek = vseek * speed;
-
-            //a = direction * speed - vseek;
-            //a = vseek - direction * speed;
-            //a.Normalize();
-
-            //newSpeed = direction * speed + a * (float)gametime.ElapsedGameTime.TotalSeconds;
-
-            //direction = newSpeed;
-            //direction.Normalize();
 
             direction = Vector3.Normalize(vseek);
 
@@ -267,11 +280,6 @@ namespace IP3D_TPF
             if(position != Vector3.Zero)
             {
                 isMoving = true;
-            }
-
-            if(direction != Vector3.Zero)
-            {
-                isTurning = true;
             }
 
             //Limitar o movimento aos limites do terreno
@@ -298,27 +306,6 @@ namespace IP3D_TPF
             if(isMoving == true)
             {
                 wheelRotationValue += 0.2f;
-            }
-
-            if(isTurning == true)
-            {
-                if(direction.Z > 0)
-                {
-                    if (steerRotationValue < 0.5f)
-                    {
-                        steerRotationValue += 0.1f;
-                    }
-
-                    if (steerRotationValue > -0.5f)
-                    {
-                        steerRotationValue -= 0.1f;
-                    }
-                }
-            }
-
-            if(isTurning == false)
-            {
-                steerRotationValue = 0f;
             }
 
             position.Y = field.SurfaceFollow(position) + 0.15f;

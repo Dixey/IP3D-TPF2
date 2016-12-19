@@ -14,8 +14,8 @@ namespace IP3D_TPF
         Model bullet;
         Matrix worldMatrix;
         BasicEffect effect;
-        public Vector3 position, direction, target, gravity;
-        float scale;
+        public Vector3 position, direction, target, gravity, speed;
+        float scale, aceleration = 20f;
         public bool isShooting = false;
 
         public Bullet(GraphicsDevice device, ContentManager content, Tank tank)
@@ -30,21 +30,30 @@ namespace IP3D_TPF
 
             scale = 0.005f;
 
+            speed = Vector3.Zero;
             gravity = new Vector3(0f, -9.8f, 0f);
+        }
 
-            position = tank.position + 2f * tank.direction;
-            target = position + 10f * tank.direction;
-            direction = target - position;
-            direction.Normalize();
+        public void Initialize(Vector3 pos, Vector3 dir)
+        {
+            //target = position + 10f * tank.direction;
+            //direction = target - position;
+            //direction.Normalize();
+
+            position = pos + new Vector3(0.0f, 2.0f, 0.0f);
+            speed = dir * aceleration;
+            
+            isShooting = true;
         }
 
         public void Update(GameTime gametime)
         {
-            isShooting = true;
-            position += direction * (float)gametime.ElapsedGameTime.TotalSeconds;
-            direction += gravity * (float)gametime.ElapsedGameTime.TotalSeconds;
+            //direction += gravity * (float)gametime.ElapsedGameTime.TotalSeconds;
+            speed += gravity * (float)gametime.ElapsedGameTime.TotalSeconds;
+            position += speed * (float)gametime.ElapsedGameTime.TotalSeconds;
+            Console.WriteLine("bullet position: " + position);
 
-            if(position.Y < 0)
+            if (position.Y < 0)
             {
                 isShooting = false;
             }
@@ -52,23 +61,23 @@ namespace IP3D_TPF
 
         public void Draw(GraphicsDevice device, Camera camera)
         {
-            //if (isShooting == true)
-            //{
+             if (isShooting == true)
+              {
                 bullet.Root.Transform = Matrix.CreateScale(scale) * Matrix.CreateTranslation(position);
 
-                foreach (ModelMesh mesh in bullet.Meshes)
+                foreach (ModelMesh mesh1 in bullet.Meshes)
                 {
-                    foreach (BasicEffect effect in mesh.Effects)
+                    foreach (BasicEffect effect1 in mesh1.Effects)
                     {
-                        effect.World = worldMatrix;
-                        effect.View = camera.viewMatrix;
-                        effect.Projection = camera.projectionMatrix;
-                        effect.EnableDefaultLighting();
+                        effect1.World = worldMatrix;
+                        effect1.View = camera.viewMatrix;
+                        effect1.Projection = camera.projectionMatrix;
+                        effect1.EnableDefaultLighting();
                     }
 
-                    mesh.Draw();
+                    mesh1.Draw();
                 }
-            //}
+            }
         }
     }
 }
