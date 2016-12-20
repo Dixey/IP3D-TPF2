@@ -126,9 +126,6 @@ namespace IP3D_TPF
                 position += Vector3.Cross(Vector3.Up, direction) * speed;
             }
 
-            //chamada da função SurfaceFollow
-            target = position + direction;
-
             if (idCamera == 0)
             {
                 position.Y = field.SurfaceFollow(position) + 2f;
@@ -170,6 +167,7 @@ namespace IP3D_TPF
 
             if(idCamera == 2)
             {
+                target = position + direction;
                 viewMatrix = Matrix.CreateLookAt(position, target, Vector3.Up);
             }
 
