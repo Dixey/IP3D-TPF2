@@ -14,7 +14,7 @@ namespace IP3D_TPF
         Model bullet;
         Matrix worldMatrix;
         BasicEffect effect;
-        public Vector3 position, direction, target, gravity, speed;
+        public Vector3 position, direction, gravity, speed;
         float scale, aceleration = 10f;
         public bool isShooting = false;
 
@@ -36,11 +36,7 @@ namespace IP3D_TPF
 
         public void Initialize(Vector3 pos, Vector3 dir)
         {
-            //target = position + 10f * tank.direction;
-            //direction = target - position;
-            //direction.Normalize();
-
-            position = pos + new Vector3(0.0f, 2.0f, 0.0f);
+            position = pos + new Vector3(0.0f, 1.5f, 0.0f);
             speed = dir * aceleration;
             
             isShooting = true;
@@ -48,7 +44,6 @@ namespace IP3D_TPF
 
         public void Update(GameTime gametime)
         {
-            //direction += gravity * (float)gametime.ElapsedGameTime.TotalSeconds;
             speed += gravity * (float)gametime.ElapsedGameTime.TotalSeconds;
             position += speed * (float)gametime.ElapsedGameTime.TotalSeconds;
 

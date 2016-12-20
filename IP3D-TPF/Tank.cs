@@ -246,18 +246,11 @@ namespace IP3D_TPF
         public void Shoot(GameTime gametime, Bullet bullet)
         {
             Vector3 shootDirection = d;
-            float rotation = turretRotationValue;
-            float height = cannonRotationValue;
-
-            rotation += turretRotationValue;
-
-            Matrix rotationMatrix = Matrix.CreateFromYawPitchRoll(rotation, MathHelper.ToRadians(90f) + height, 0);
-
-            shootDirection = Vector3.Transform(n, rotationMatrix);
-            /*shootDirection = Vector3.Transform(shootDirection, Matrix.CreateFromAxisAngle(n, turretRotationValue));
+            shootDirection = Vector3.Transform(shootDirection, Matrix.CreateFromAxisAngle(n, turretRotationValue * 0.02f));
             Vector3 rightTurret = Vector3.Cross(shootDirection, n);
 
-            shootDirection = Vector3.Transform(shootDirection, Matrix.CreateFromAxisAngle(rightTurret, cannonRotationValue));*/
+            shootDirection = Vector3.Transform(shootDirection, Matrix.CreateFromAxisAngle(rightTurret, -cannonRotationValue * 0.02f));
+            shootDirection = Vector3.Transform(shootDirection, Matrix.CreateRotationY(MathHelper.ToRadians(180f)));
             shootDirection.Normalize();
 
             bullet.Initialize(position, shootDirection);
