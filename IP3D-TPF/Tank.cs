@@ -189,7 +189,7 @@ namespace IP3D_TPF
                 }
 
                 //Shoot
-                if (keys.IsKeyDown(Keys.Space))
+                if ((keys.IsKeyDown(Keys.Space) && (bullet.isShooting == false)))
                 {   
                     Shoot(gametime, bullet);
                 }
@@ -216,7 +216,6 @@ namespace IP3D_TPF
                 }
 
                 position.Y = field.SurfaceFollow(position) + 0.15f;
-                Console.WriteLine("tank position: " + position);
 
                 //chamada da função NormalFollow
                 n = field.NormalFollow(position);
@@ -246,7 +245,7 @@ namespace IP3D_TPF
 
         public void Shoot(GameTime gametime, Bullet bullet)
         {
-            Vector3 shootDirection = Vector3.Zero;
+            Vector3 shootDirection = d;
             float rotation = turretRotationValue;
             float height = cannonRotationValue;
 
@@ -254,9 +253,12 @@ namespace IP3D_TPF
 
             Matrix rotationMatrix = Matrix.CreateFromYawPitchRoll(rotation, MathHelper.ToRadians(90f) + height, 0);
 
-            shootDirection = Vector3.Transform(Vector3.Up, rotationMatrix);
+            shootDirection = Vector3.Transform(n, rotationMatrix);
+            /*shootDirection = Vector3.Transform(shootDirection, Matrix.CreateFromAxisAngle(n, turretRotationValue));
+            Vector3 rightTurret = Vector3.Cross(shootDirection, n);
+
+            shootDirection = Vector3.Transform(shootDirection, Matrix.CreateFromAxisAngle(rightTurret, cannonRotationValue));*/
             shootDirection.Normalize();
-            Console.WriteLine("Shoot Direction: " + shootDirection);
 
             bullet.Initialize(position, shootDirection);
         }

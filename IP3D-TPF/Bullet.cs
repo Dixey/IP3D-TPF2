@@ -15,7 +15,7 @@ namespace IP3D_TPF
         Matrix worldMatrix;
         BasicEffect effect;
         public Vector3 position, direction, target, gravity, speed;
-        float scale, aceleration = 20f;
+        float scale, aceleration = 10f;
         public bool isShooting = false;
 
         public Bullet(GraphicsDevice device, ContentManager content, Tank tank)
@@ -28,7 +28,7 @@ namespace IP3D_TPF
             effect.TextureEnabled = false;
             effect.LightingEnabled = false;
 
-            scale = 0.005f;
+            scale = 0.20f;
 
             speed = Vector3.Zero;
             gravity = new Vector3(0f, -9.8f, 0f);
@@ -51,7 +51,6 @@ namespace IP3D_TPF
             //direction += gravity * (float)gametime.ElapsedGameTime.TotalSeconds;
             speed += gravity * (float)gametime.ElapsedGameTime.TotalSeconds;
             position += speed * (float)gametime.ElapsedGameTime.TotalSeconds;
-            Console.WriteLine("bullet position: " + position);
 
             if (position.Y < 0)
             {
@@ -61,10 +60,9 @@ namespace IP3D_TPF
 
         public void Draw(GraphicsDevice device, Camera camera)
         {
-             if (isShooting == true)
-              {
-                bullet.Root.Transform = Matrix.CreateScale(scale) * Matrix.CreateTranslation(position);
-
+            if (isShooting == true)
+            {
+                worldMatrix = Matrix.CreateScale(scale) * Matrix.CreateTranslation(position);
                 foreach (ModelMesh mesh1 in bullet.Meshes)
                 {
                     foreach (BasicEffect effect1 in mesh1.Effects)
