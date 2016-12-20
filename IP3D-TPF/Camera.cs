@@ -25,7 +25,7 @@ namespace IP3D_TPF
         public Vector3 position, direction, target, thirdPersonReference;
         public Matrix viewMatrix, projectionMatrix, rotationMatrix;
         BasicEffect effect;
-        public int idCamera = 0;
+        public int idCamera = 1;
 
         public Camera(GraphicsDevice device, CameraType camera, Field field, Tank tank)
         {
