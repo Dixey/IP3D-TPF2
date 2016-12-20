@@ -57,8 +57,6 @@ namespace IP3D_TPF
             bool colisão1 = false;
             bool colisão2 = false;
             float raiotank1 = 2f, raiotank2 = 2f;
-            int res;
-            Random random = new Random();
 
             SurfaceFollowCamera.Update(GraphicsDevice, gameTime, field, tank, CameraType.SurfaceFollow);
             ThirdPersonCamera.Update(GraphicsDevice, gameTime, field, tank, CameraType.ThirdPerson);

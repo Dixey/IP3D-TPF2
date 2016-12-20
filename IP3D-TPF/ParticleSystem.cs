@@ -12,7 +12,7 @@ namespace IP3D_TPF
     {
         BasicEffect effect;
         Matrix worldMatrix;
-        VertexPositionColor[] pó;
+        List<Particle> poeira;
         Vector3 initialPosition, position, direction, center, gravity;
         Random random;
         int radius;
@@ -27,10 +27,12 @@ namespace IP3D_TPF
             effect.TextureEnabled = false;
             effect.LightingEnabled = false;
 
-            position = tank.position - 2f * tank.direction;
-            speed = 0.01f;
-            pó = new VertexPositionColor[2];
-            lifeTime = 0;
+
+        }
+
+        public void CreateParticles(Vector3 pos, Vector3 dir)
+        {
+
         }
 
         public void Update(GameTime gametime)
@@ -40,12 +42,15 @@ namespace IP3D_TPF
 
         public void Draw(GraphicsDevice device, Camera camera)
         {
-            effect.World = worldMatrix;
-            effect.View = camera.viewMatrix;
-            effect.Projection = camera.projectionMatrix;
-            effect.CurrentTechnique.Passes[0].Apply();
+            foreach(Particle p in poeira)
+            {
+                effect.World = worldMatrix;
+                effect.View = camera.viewMatrix;
+                effect.Projection = camera.projectionMatrix;
+                effect.CurrentTechnique.Passes[0].Apply();
 
-            device.DrawUserPrimitives<VertexPositionColor>(PrimitiveType.LineList, pó, 0, 1);
+                device.DrawUserPrimitives<VertexPositionColor>(PrimitiveType.LineList, p.pó, 0, 1);
+            }
         }
     }
 }
